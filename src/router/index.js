@@ -10,7 +10,13 @@ const routes = [
   {
     path: '/artists',
     name: 'Artists',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Artists.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/artists/Artists.vue')
+  },
+  {
+    path: '/artist/:id',
+    name: 'Artist',
+    component: () => import(/* webpackChunkName: "about" */ '../views/artists/Artist.vue'),
+    props: true
   },
   {
     path: '/news',
