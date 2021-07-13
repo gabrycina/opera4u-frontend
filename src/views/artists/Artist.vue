@@ -26,7 +26,7 @@ export default {
     },
   },
   created() {
-    this.fetchArtist();
+    this.fetchArtist()
   },
 };
 </script>
