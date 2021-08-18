@@ -8536,6 +8536,11 @@
     "chokidar" "^3.4.1"
     "watchpack-chokidar2" "^2.0.1"
 
+"wave-ui@^2.23.0":
+  "integrity" "sha512-YhN+CskWH6hB4Td7oG5fAewHHp/NBgI7wZthXnv60b97Q+A48Pw9bdJSmnTYXmDCCXAtei4jTDaDr26GPulJUQ=="
+  "resolved" "https://registry.npmjs.org/wave-ui/-/wave-ui-2.23.0.tgz"
+  "version" "2.23.0"
+
 "wbuf@^1.1.0", "wbuf@^1.7.3":
   "integrity" "sha1-wdjRSTFtPqhShIiVy2oL/oh7h98="
   "resolved" "https://registry.npm.taobao.org/wbuf/download/wbuf-1.7.3.tgz"
