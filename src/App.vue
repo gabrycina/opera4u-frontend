@@ -6,20 +6,24 @@
         mode="out-in"
         enter-active-class="animate__animated animate__fadeIn"
         leave-active-class="animate__animated animate__fadeOut"
-        :duration="{ enter: 800, leave: 600}"
+        :duration="{ enter: 800, leave: 600 }"
       >
         <component :is="Component"></component>
       </transition>
     </router-view>
+    <Footer />
   </w-app>
 </template>
 
 <script>
 import Navbar from "./components/Navbar.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
+  name: "App",
   components: {
     Navbar,
+    Footer,
   },
 };
 </script>
@@ -44,5 +48,9 @@ export default {
 
 #nav a.rourter-link-exact-active {
   color: #42b983;
+}
+
+.backgroundcolor {
+  background-color: lightblue;
 }
 </style>

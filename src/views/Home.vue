@@ -7,6 +7,7 @@
 <script>
 // @ is an alias to /src
 export default {
+  title: 'Opera4u - Artist Management',
   name: "Home",
   methods: {
     async fetchRecentNews() {

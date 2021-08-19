@@ -12,6 +12,7 @@
 
 <script>
 export default {
+  title: 'Operaa4u - News',
   data(){
     return {
       news: [],

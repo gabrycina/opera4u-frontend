@@ -28,6 +28,7 @@ import Card from "../../components/Card.vue";
 import DownloadButton from "../../components/DownloadButton.vue"
 
 export default {
+  title: 'Opera4u - Our Artists',
   name: "Artists",
   data() {
     return {

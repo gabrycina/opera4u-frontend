@@ -14,6 +14,7 @@
 
 <script>
 export default {
+  title: 'Opera4u - About Us',
   methods: {
     async fetchTeam() {
       const res = await fetch("http://localhost:1337/agents", {
