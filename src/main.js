@@ -7,9 +7,12 @@ import 'animate.css'
 import titleMixin from './mixins/titleMixin'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import VueSmoothScroll from 'vue3-smooth-scroll'
 
 library.add(faBars)
+library.add(faChevronDown)
 
 const app = createApp(App)
 
@@ -22,4 +25,8 @@ new WaveUI(app, {
 
 app.mixin(titleMixin)
 app.use(router)
+app.use(VueSmoothScroll, {
+    duration: 1200,
+    updateHistory: false
+  })
 app.mount('#app')
