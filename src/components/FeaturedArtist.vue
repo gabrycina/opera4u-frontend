@@ -44,9 +44,6 @@ export default {
 </script>
 
 <style lang="scss">
-.artistBio {
-}
-
 .artistName {
   font-size: 2vw;
   white-space: nowrap;
