@@ -28,7 +28,7 @@ export default {
 <style>
 h4 {
     background: linear-gradient(180deg, #A6291E 0%, #640800 100%);
-    font-size: .7rem;
+    font-size: 1.2vw;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -36,7 +36,8 @@ h4 {
 
 p {
     color: #868686;
-    font-size: .5rem;
+    padding-top: .5em;
+    font-size: 1vw;
 }
 
 .underlined {

@@ -19,7 +19,6 @@ const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.config.productionTip = false
 
-
 new WaveUI(app, {
 })
 

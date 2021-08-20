@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <w-flex class="row hero justify-center">
-      <div class="xs6">
+    <w-flex wrap class="hero justify-center">
+      <div class="xs12 lg6">
         <img
           class="heroImage xs10"
           style="float:right;"
@@ -9,7 +9,7 @@
           alt=""
         />
       </div>
-      <div class="xs6">
+      <div class="xs12 lg6">
         <div class="heroText">
           <w-flex class="column justify-start align-start" shrink>
             <h2 style="font-size: 2vw;">Opera4u.com</h2>
@@ -45,22 +45,20 @@
       </a>
     </w-flex>
     <section id="about" class="my10">
-      <w-flex class="row justify-center">
+      <w-flex wrap class="justify-center">
         <div class="xs5">
           <w-flex class="column aboutText align-end justify-center">
             <h1 style="font-size: 4vw;">Our Agency</h1>
             <p class="headline my5 text-right" style="font-size: 1.8vw">
-              Opera4u has <b>years</b> of professional experience
-              and industry knowledge as an 
-              opera and concert agency.
+              Opera4u has <b>years</b> of professional experience and industry
+              knowledge as an opera and concert agency.
             </p>
             <p class="headline mb5 text-right" style="font-size: 1.8vw">
-              It offers <b>well-known</b> opera singers, 
-              conductors and directors.
+              It offers <b>well-known</b> opera singers, conductors and
+              directors.
             </p>
             <p class="headline text-right" style="font-size: 1.8vw">
-              The promotion of young talents 
-              to the stars of tomorrow is 
+              The promotion of young talents to the stars of tomorrow is
               <span style="color: #770a00"><b>our passion.</b></span>
             </p>
           </w-flex>
@@ -81,12 +79,77 @@
       </a>
     </w-flex>
     <section id="news" class="my10">
-
+      <w-flex class="column">
+        <h1 class="headline pt3 pb4"><b>Latest News</b></h1>
+        <div class="divider">
+          <w-divider></w-divider>
+          <w-flex class="row pt6 xs12 text-left">
+            <NewsArticle
+              class="mr5 mb5 xs6"
+              :title="
+                this.str_limit(
+                  'Oksana giving her debut at Bayreuther Festspiele',
+                  100
+                )
+              "
+              image="https://i.ibb.co/dMSZFyJ/team.jpg"
+              :body="this.str_limit(body, 1000)"
+              artist="Oksana Lyniv"
+              :date="dateTmp"
+            />
+            <w-flex class="column xs4">
+              <NewsArticle
+                :title="
+                  this.str_limit(
+                    'Oksana giving her debut at Bayreuther Festspiele',
+                    20
+                  )
+                "
+                image="https://i.ibb.co/dMSZFyJ/team.jpg"
+                body=""
+                artist="Oksana Lyniv"
+                :date="dateTmp"
+                class="mr5 mb5"
+              />
+              <NewsArticle
+                :title="
+                  this.str_limit(
+                    'Oksana giving her debut at Bayreuther Festspiele',
+                    20
+                  )
+                "
+                image="https://i.ibb.co/dMSZFyJ/team.jpg"
+                body=""
+                artist="Oksana Lyniv"
+                :date="dateTmp"
+                class="mr5 mb5"
+              />
+            </w-flex>
+            <NewsArticle
+              class="mb5 xs4"
+              :title="
+                this.str_limit(
+                  'Oksana giving her debut at Bayreuther Festspiele',
+                  1000
+                )
+              "
+              image="https://i.ibb.co/dMSZFyJ/team.jpg"
+              :body="this.str_limit(body, 1000)"
+              artist="Oksana Lyniv"
+              :date="dateTmp"
+            />
+          </w-flex>
+        </div>
+      </w-flex>
+      <FeaturedArtists :artists="artists" />
     </section>
   </div>
 </template>
 
 <script>
+import NewsArticle from "../components/NewsArticle.vue";
+import FeaturedArtists from "../components/FeaturedArtists.vue";
+
 // @ is an alias to /src
 export default {
   title: "Opera4u - Artist Management",
@@ -94,8 +157,17 @@ export default {
   data() {
     return {
       recentNews: [],
+      artists: [],
       heroText: "manage",
+      baseUrl: "/src/",
+      dateTmp: this.currentDate(),
+      body:
+        "Oksana Lyniv giving her debut at Bayreuther Festspiele conducting the festive opening night of R. Wagner‘s Der Fliegende...",
     };
+  },
+  components: {
+    NewsArticle,
+    FeaturedArtists,
   },
   methods: {
     async fetchRecentNews() {
@@ -121,6 +193,9 @@ export default {
         if (obj === undefined) break;
         if (obj.homepage) {
           this.recentNews.push(obj);
+          for (let j = 0; j < obj.artists.length; j++) {
+            this.artists.push(obj.artists[j]);
+          }
           i++;
         }
       }
@@ -128,12 +203,29 @@ export default {
       //Debug print
       console.log("Objets of (max 5) most recent news");
       console.log(this.recentNews);
+      console.log(this.artists);
     },
     rollHeroText() {
       setInterval(() => {
         if (this.heroText === "manage") this.heroText = "provide";
         else this.heroText = "manage";
       }, 5000);
+    },
+    currentDate() {
+      const current = new Date();
+      const date = `${current.getDate()}/${current.getMonth() +
+        1}/${current.getFullYear()}`;
+      console.log(date);
+      return date;
+    },
+    str_limit(value, size) {
+      if (!value) return "";
+      value = value.toString();
+
+      if (value.length <= size) {
+        return value;
+      }
+      return value.substr(0, size) + "...";
     },
   },
   created() {
@@ -188,5 +280,10 @@ export default {
 
 .arrow1 {
   animation: slide1 2s ease-in-out infinite;
+}
+
+.divider {
+  margin-right: 12vw;
+  margin-left: 12vw;
 }
 </style>
