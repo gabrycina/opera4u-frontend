@@ -39,11 +39,13 @@
         </div>
       </div>
     </w-flex>
+
     <w-flex class="row py12 justify-center">
       <a href="#about" v-smooth-scroll>
         <font-awesome-icon class="arrow1 black" icon="chevron-down" size="5x" />
       </a>
     </w-flex>
+
     <section id="about" class="my10">
       <w-flex wrap class="justify-center">
         <div class="xs5">
@@ -73,11 +75,13 @@
         </div>
       </w-flex>
     </section>
+
     <w-flex class="row py12 justify-center">
       <a href="#news" v-smooth-scroll>
         <font-awesome-icon class="arrow1 black" icon="chevron-down" size="5x" />
       </a>
     </w-flex>
+
     <section id="news" class="my10">
       <w-flex class="column">
         <h1 class="headline pt3 pb4"><b>Latest News</b></h1>
@@ -86,25 +90,15 @@
           <w-flex class="row pt6 xs12 text-left">
             <NewsArticle
               class="mr5 mb5 xs6"
-              :title="
-                this.str_limit(
-                  'Oksana giving her debut at Bayreuther Festspiele',
-                  100
-                )
-              "
+              title="Oksana giving her debut at Bayreuther Festspiele"
               image="https://i.ibb.co/dMSZFyJ/team.jpg"
-              :body="this.str_limit(body, 1000)"
+              :body="body"
               artist="Oksana Lyniv"
               :date="dateTmp"
             />
-            <w-flex class="column xs4">
+            <w-flex class="column xs5">
               <NewsArticle
-                :title="
-                  this.str_limit(
-                    'Oksana giving her debut at Bayreuther Festspiele',
-                    20
-                  )
-                "
+                title="Oksana giving her debut at Bayreuther Festspiele"
                 image="https://i.ibb.co/dMSZFyJ/team.jpg"
                 body=""
                 artist="Oksana Lyniv"
@@ -112,12 +106,7 @@
                 class="mr5 mb5"
               />
               <NewsArticle
-                :title="
-                  this.str_limit(
-                    'Oksana giving her debut at Bayreuther Festspiele',
-                    20
-                  )
-                "
+                title="Oksana giving her debut at Bayreuther Festspiele"
                 image="https://i.ibb.co/dMSZFyJ/team.jpg"
                 body=""
                 artist="Oksana Lyniv"
@@ -127,14 +116,9 @@
             </w-flex>
             <NewsArticle
               class="mb5 xs4"
-              :title="
-                this.str_limit(
-                  'Oksana giving her debut at Bayreuther Festspiele',
-                  1000
-                )
-              "
+              title="Oksana giving her debut at Bayreuther Festspiele"
               image="https://i.ibb.co/dMSZFyJ/team.jpg"
-              :body="this.str_limit(body, 1000)"
+              :body="body"
               artist="Oksana Lyniv"
               :date="dateTmp"
             />
@@ -143,6 +127,7 @@
       </w-flex>
       <FeaturedArtists :artists="artists" />
     </section>
+    
   </div>
 </template>
 
@@ -162,7 +147,7 @@ export default {
       baseUrl: "/src/",
       dateTmp: this.currentDate(),
       body:
-        "Oksana Lyniv giving her debut at Bayreuther Festspiele conducting the festive opening night of R. Wagner‘s Der Fliegende...",
+        "Oksana Lyniv giving her debut at Bayreuther Festspiele conducting the festive opening night of R. Wagner‘s Der Fliegende Oksana Lyniv giving her debut at Bayreuther Festspiele conducting the festive opening night of R. Wagner‘s Der Fliegende Oksana Lyniv giving her debut at Bayreuther Festspiele conducting the festive opening night of R. Wagner‘s Der Fliegende Oksana Lyniv giving her debut at Bayreuther Festspiele conducting the festive opening night of R. Wagner‘s Der Fliegende",
     };
   },
   components: {
@@ -235,7 +220,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .hero {
   padding-top: 15vh;
 }
@@ -257,6 +242,9 @@ export default {
 }
 
 .aboutText {
+  p {
+    color: #868686;
+  }
   height: 90%;
   width: 100%;
   display: flex;

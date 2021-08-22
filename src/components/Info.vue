@@ -25,7 +25,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 h4 {
     background: linear-gradient(180deg, #A6291E 0%, #640800 100%);
     font-size: 1.2vw;
