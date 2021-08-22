@@ -1,13 +1,6 @@
 <template>
-  <w-card content-class="content" no-border>
+  <HorizontalCard content-class="content" :image="`${baseUrl + artist.avatar.url}`" no-border>
     <w-flex class="row justify-start">
-      <w-image
-        class="mr4"
-        :src="`${baseUrl + artist.avatar.url}`"
-        width="8em"
-        height="6em"
-        lazy
-      ></w-image>
       <w-flex class="column">
         <h2 class="artistName no-wrap text-left">{{ artist.name }}</h2>
         <div class="artistBio xs8 text-left">
@@ -15,16 +8,21 @@
         </div>
       </w-flex>
     </w-flex>
-  </w-card>
+  </HorizontalCard>
 </template>
 
 <script>
+import HorizontalCard from './HorizontalCard.vue'
+
 export default {
   name: "FeaturedArtist",
   data() {
     return {
       baseUrl: "http://localhost:1337",
     };
+  },
+  components: {
+    HorizontalCard
   },
   methods: {
     str_limit(value, size) {
