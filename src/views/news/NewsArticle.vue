@@ -1,15 +1,35 @@
 <template>
-  <h1>{{ article.title }}</h1>
+  <div v-if="loading">
+    <w-flex class="pt12 pb6 px10 px5 row justify-center">
+      <div
+        id="post-image"
+        :style="{
+          background:
+            'url(' + baseUrl + article.image.url + ')' + '50% 50% no-repeat',
+        }"
+      ></div>
+    </w-flex>
+    <h1 class="mx10">{{ article.title }}</h1>
+    <p class="pt5 mx10">{{ article.body }}</p>
+    <FeaturedArtists :artists="article.artists"/>
+  </div>
 </template>
 
 <script>
+import FeaturedArtists from '../../components/FeaturedArtists.vue'
+
 export default {
+  title: "Opera4u - News",
   name: "NewsArticle",
   props: ["id"],
+  components: {
+    FeaturedArtists
+  },
   data() {
     return {
+      loading: false,
       article: {},
-      recentNews: [],
+      baseUrl: "http://localhost:1337",
     };
   },
   methods: {
@@ -25,43 +45,29 @@ export default {
       ).then((response) => response.json());
 
       this.article = res[0];
-      console.log(this.article);
-      console.log(res);
-    },
-
-    async fetchRecentNews() {
-      const NUMBER_OF_NEWS = 5;
-
-      //Making GET request for news
-      const res = await fetch("http://localhost:1337/news-articles", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then((response) => response.json());
-
-      //Sorting the array in descending order
-      res.sort((a, b) => {
-        return new Date(a.date) - new Date(b.date);
-      });
-
-      //Taking the first 5 news with homepage flag === true
-      var i = 0;
-      while (i < NUMBER_OF_NEWS) {
-        var obj = res.pop();
-        if (obj === undefined) break;
-        this.recentNews.push(obj);
-        i++;
-      }
-
-      //Debug print
-      console.log("Objets of (max 5) most recent news");
-      console.log(this.recentNews);
+      console.log(this.article)
     },
   },
-  created() {
-    this.fetchArticle()
-    this.fetchRecentNews()
+  async created() {
+    await this.fetchArticle();
+    this.loading = true;
   },
 };
 </script>
+
+<style lang="scss" scoped>
+#post-image {
+  width: 530px;
+  height: 350px;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+p {
+  color: #868686;
+  max-width: inherit;
+  font-size: 1.5rem;
+}
+</style>

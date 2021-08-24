@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  title: "Operaa4u - News",
+  title: "Opera4u - News",
   name: "News",
   data() {
     return {
@@ -110,7 +110,7 @@ $shadow: rgba(0, 0, 0, 0.2);
   flex-direction: row;
   text-align: left;
   background: $white;
-  box-shadow: 0 0.1875rem 1.5rem $shadow;
+  box-shadow: 0 0.1875rem .8rem $shadow;
   border-radius: 0.375rem;
   overflow: hidden;
   height: 20vh;
@@ -156,6 +156,7 @@ $shadow: rgba(0, 0, 0, 0.2);
   #container {
     width: 18rem;
     height: 27.25rem;
+    margin-bottom: 2rem;
   }
 
   .blog-card {
@@ -199,6 +200,7 @@ $shadow: rgba(0, 0, 0, 0.2);
 h1 {
   font-size: 6vw;
   padding-top: 3vw;
+  padding-bottom: 1vw;
     @media (max-width: 40rem) {
   font-size: 15vw;
   }
@@ -219,7 +221,7 @@ h1 {
   border: none;
   padding: 10px 11px 11px 11px;
   border-radius: 100000000px;
-  box-shadow: 0 0.1875rem 1.5rem $shadow;
+  box-shadow: 0 0.1875rem .8rem $shadow;
   outline: none;
   margin: 0;
   box-sizing: border-box; 
