@@ -43,4 +43,14 @@ p {
 .underlined {
     text-decoration: underline;
 }
+
+@media(max-width: 40rem){
+    h4 {
+        font-size: 5vw;
+    }
+
+    p {
+        font-size: 3vw;
+    }
+}
 </style>

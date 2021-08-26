@@ -1,5 +1,5 @@
 <template name="Navbar">
-  <div v-if="!isMobile()">
+  <div v-if="!isMobileHelper()">
     <div class="container pt3 xs7 justify-end">
       <img id="svg" class="pa0 ma0 xs12" :src="NavBg" alt="Opera4u Logo" />
       <router-link v-on:click="changeActiveRoute('/')" to="/">
@@ -58,7 +58,9 @@
 
   <div v-else>
     <w-flex class="row justify-space-between">
-      <img class="pt5 pl5" :src="Logo" alt="" />
+      <router-link v-on:click="changeActiveRoute('/')" to="/">
+        <img class="pt5 pl5" :src="Logo" alt="" />
+      </router-link>
 
       <w-button
         class="pr5"
@@ -66,13 +68,18 @@
         text
         color="primary"
       >
-        <font-awesome-icon class="black" icon="bars" size="xxl" />
+        <font-awesome-icon class="black" icon="bars" size="2x" />
       </w-button>
     </w-flex>
 
-    <w-drawer bg-color="steelblue" v-model="showDrawer" :right="true" @close="showDrawer = false">
+    <w-drawer
+      bg-color="steelblue"
+      v-model="showDrawer"
+      :right="true"
+      @close="showDrawer = false"
+    >
       <w-button
-        class="button--close"
+        class="button--close mt5 mr10"
         @click="showDrawer = false"
         sm
         outline
@@ -168,9 +175,6 @@ export default {
     },
     onResize() {
       this.windowWidth = window.innerWidth;
-    },
-    isMobile() {
-      return this.windowWidth <= 760 ? true : false;
     },
   },
   setup() {

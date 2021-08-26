@@ -90,4 +90,20 @@ export default {
   bottom: 0;
   font-size: 1vw;
 }
+
+@supports (display: grid) {
+
+  @media (max-width: 40rem) {
+    .content {
+      p {
+        font-size: 4vw;
+      }
+    }
+
+    #artist {
+      font-size: 4vw;
+    }
+  }
+
+}
 </style>

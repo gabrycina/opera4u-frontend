@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import FeaturedArtists from '../../components/FeaturedArtists.vue'
+import FeaturedArtists from '../../components/FeaturedArtists/FeaturedArtists.vue'
 
 export default {
   title: "Opera4u - News",

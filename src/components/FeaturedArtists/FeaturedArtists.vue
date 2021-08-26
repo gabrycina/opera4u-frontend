@@ -1,6 +1,6 @@
 <template>
   <div class="divider">
-    <h1 class="pt10 pb4 text-left ole"><b>Featured Artists</b></h1>
+    <h1 class="pt10 text-left ole"><b>Featured Artists</b></h1>
     <w-divider></w-divider>
     <vue-horizontal responsive>
       <section class="lg6 md6 xs12 py5 pl10" v-for="artist in artists" :key="artist.name">
@@ -12,7 +12,7 @@
 
 <script>
 import VueHorizontal from "vue-horizontal";
-import FeaturedArtist from "../components/FeaturedArtist.vue";
+import FeaturedArtist from "./FeaturedArtist.vue";
 
 export default {
   name: "FeaturedArtists",
@@ -26,9 +26,10 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 h1 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
 }
 
 

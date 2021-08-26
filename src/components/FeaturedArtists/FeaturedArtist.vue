@@ -10,14 +10,7 @@
         <h2 class="artistName no-wrap text-left">{{ artist.name }}</h2>
         <div class="artistBio xs8 text-left">
           <p>
-            "Oksana Lyniv giving her debut at Bayreuther Festspiele conducting
-            the festive opening night of R. Wagner‘s Der Fliegende Oksana Lyniv
-            giving her debut at Bayreuther Festspiele conducting the festive
-            opening night of R. Wagner‘s Der Fliegende Oksana Lyniv giving her
-            debut at Bayreuther Festspiele conducting the festive opening night
-            of R. Wagner‘s Der Fliegende Oksana Lyniv giving her debut at
-            Bayreuther Festspiele conducting the festive opening night of R.
-            Wagner‘s Der Fliegende",
+            {{ artist.bioEnglish }}
           </p>
         </div>
       </w-flex>
@@ -26,7 +19,7 @@
 </template>
 
 <script>
-import HorizontalCard from "./HorizontalCard.vue";
+import HorizontalCard from "../HorizontalCard.vue";
 
 export default {
   name: "FeaturedArtist",
@@ -40,17 +33,6 @@ export default {
   },
   components: {
     HorizontalCard,
-  },
-  methods: {
-    str_limit(value, size) {
-      if (!value) return "";
-      value = value.toString();
-
-      if (value.length <= size) {
-        return value;
-      }
-      return value.substr(0, size) + "...";
-    },
   },
   props: {
     artist: Object,
@@ -79,6 +61,20 @@ max-width: 90vw;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+}
+
+@supports (display: grid) {
+
+
+  @media (max-width: 60rem) {
+    .artistName {
+      font-size: 4vw;
+    }
+
+    p {
+      font-size: 2.5vw;
+    }
   }
 }
 </style>

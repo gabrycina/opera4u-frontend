@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import Navbar from "./components/Navbar.vue";
-import Footer from "./components/Footer.vue";
+import Navbar from "./components/Navbar/Navbar.vue";
+import Footer from "./components/Footer/Footer.vue";
 
 export default {
   name: "App",
@@ -35,22 +35,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #000;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.rourter-link-exact-active {
-  color: #42b983;
-}
-
-.backgroundcolor {
-  background-color: lightblue;
 }
 </style>

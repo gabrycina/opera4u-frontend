@@ -4,7 +4,7 @@
       <img :src="Logo" alt="" />
     </w-flex>
 
-    <div v-if="!isMobile()">
+    <div v-if="!isMobileHelper()">
       <w-flex class="pt5 row shrink justify-space-evenly">
         <Info
           title="Address"
@@ -76,9 +76,6 @@ export default {
   methods: {
     onResize() {
       this.windowWidth = window.innerWidth;
-    },
-    isMobile() {
-      return this.windowWidth <= 760 ? true : false
     },
   },
   setup() {
