@@ -42,7 +42,7 @@
         </w-flex>
 
         <w-flex class="column xs12 md5 lg5">
-          <div class="text-left title1">
+          <div v-if="artist.category" class="text-left title1">
             <h1>
               {{ artist.name }}
             </h1>
@@ -50,9 +50,54 @@
               {{ artist.category[0].displayName }}
             </h2>
             <w-divider class="my3"></w-divider>
-            
+            <b>
+              <read-more
+                class="text"
+                style="font-size: 1.2vw"
+                more-str="Read More"
+                :text="bio"
+                link="#"
+                less-str="Read Less"
+                :max-chars="380"
+              ></read-more>
+            </b>
           </div>
         </w-flex>
+      </w-flex>
+    </section>
+    <section class="container">
+      <h1 class="pt10 pb3 text-left ole" style="font-weight: 300;">
+        Gallery
+      </h1>
+      <w-divider></w-divider>
+      <w-flex class="column mt10" style="margin-left: 15vw; margin-right: 15vw">
+        <div :key="reload">
+          <vue-carousel :data="data" indicator-type="disc"></vue-carousel>
+        </div>
+      </w-flex>
+    </section>
+    <section class="container">
+      <h1 class="pt10 pb3 text-left ole" style="font-weight: 300;">
+        News on {{ artist.name }}
+      </h1>
+      <w-divider></w-divider>
+      <w-flex class="column mt10" style="margin-left: 10vw; margin-right: 10vw">
+      </w-flex>
+    </section>
+    <section class="container">
+      <h1 class="pt10 pb3 text-left ole" style="font-weight: 300;">
+        Press
+      </h1>
+      <w-divider></w-divider>
+      <w-flex class="column mt10" style="margin-left: 10vw; margin-right: 10vw">
+      </w-flex>
+    </section>
+    <section class="container">
+      <h1 class="pt10 pb3 text-left ole" style="font-weight: 300;">
+        Disography
+      </h1>
+      <w-divider></w-divider>
+      <w-flex class="column mt10" style="margin-left: 10vw; margin-right: 10vw">
       </w-flex>
     </section>
   </w-flex>
@@ -60,11 +105,15 @@
 
 <script>
 export default {
+  name: "Artist",
   props: ["id"],
   data() {
     return {
       artist: {},
       baseUrl: "http://localhost:1337",
+      bio: this.artist ? this.artist.bioEnglish : "",
+      data: [],
+      reload: 0,
     };
   },
   methods: {
@@ -80,6 +129,16 @@ export default {
       ).then((response) => response.json());
 
       this.artist = res[0];
+      this.bio = this.artist.bioEnglish;
+      for (var i = 0; i < this.artist.gallery.length; i++) {
+        this.data.push(
+          `<div class='carousel__item'><img style='width: 100%; height: 100%;' class='carousel__image' src='${this
+            .baseUrl + this.artist.gallery[i].url}' alt='' /></div>`
+        );
+      }
+
+      this.reload++;
+      console.log(this.data);
       console.log(this.artist);
     },
   },
@@ -174,5 +233,15 @@ img {
 a:-webkit-any-link {
   color: inherit;
   cursor: pointer;
+}
+
+.carousel__item {
+  width: 60%;
+  height: 100px;
+}
+
+.carousel__image {
+  width: 100%;
+  height: 100%;
 }
 </style>

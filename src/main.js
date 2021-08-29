@@ -1,4 +1,4 @@
-import { createApp } from "vue";
+import { createApp } from "vue/dist/vue.esm-bundler";
 import App from "./App.vue";
 import router from "./router";
 import WaveUI from "wave-ui";
@@ -10,6 +10,8 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookSquare } from "@fortawesome/fontawesome-free-brands";
 import { faInstagram } from "@fortawesome/fontawesome-free-brands";
+import ReadMore from "vue-read-more";
+import VueCarousel from "@chenfengyuan/vue-carousel";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import VueSmoothScroll from "vue3-smooth-scroll";
@@ -35,6 +37,8 @@ app.mixin({
   },
 });
 
+app.component(VueCarousel.name, VueCarousel);
+app.use(ReadMore);
 app.use(router);
 app.use(VueSmoothScroll, {
   duration: 1200,
