@@ -1,21 +1,52 @@
 <template>
   <div class="about">
-    <h1>This is artists page</h1>
+    <h1 id="title">Artists</h1>
 
-    <DownloadButton text="Download All Artists" :proxy="pdf"/>
+    <div>
+      <select v-model="selected" class="py3 pl8 input">
+        <option value="">Pick a Category</option>
+        <option
+          v-for="category in categories"
+          :value="category.displayName"
+          :key="category.id"
+        >
+          {{ category.displayName }}
+        </option>
+      </select>
+    </div>
 
-    <Buttons
-      @object-selection="selectCategory"
-      :objects="categories"
-      :selected="selected"
-    />
+    <!-- TODO UNCOMMENT -->
+    <!-- <DownloadButton text="Download All Artists" :proxy="pdf"/> -->
 
     <div :key="category.id" v-for="category in filteredCategories">
-      {{ category.name }}
-      <div :key="artist.id" v-for="artist in category.artists">
-        <router-link :to="{ name: 'Artist', params: { id: artist.id } }">
-          <Card :name="artist.name" />
-        </router-link>
+      <div class="divider">
+        <h1 class="pt10 pb3 text-left ole" style="font-weight: 300;">
+          {{ category.displayName }}
+        </h1>
+        <w-divider></w-divider>
+        <w-flex class="row wrap">
+          <section v-if="category.artists.length == 0" class="text-center xs12 px5">
+            <h1 class="pa12" style="color: #868686; font-weight: 300; opacity: .5">
+              No Artists in this Category
+            </h1>
+          </section>
+          <section
+            class="lg3 md3 xs12 py5 px5"
+            v-for="artist in category.artists"
+            :key="artist.id"
+          >
+            <router-link :to="{ name: 'Artist', params: { id: artist.id } }">
+              <w-flex class="column">
+                <div class="cardImage xs12">
+                  <img :src="baseUrl + artist.avatar.url" />
+                </div>
+                <p class="title2 pt4">
+                  <b>{{ artist.name }}</b>
+                </p>
+              </w-flex>
+            </router-link>
+          </section>
+        </w-flex>
       </div>
     </div>
   </div>
@@ -23,30 +54,29 @@
 
 <script>
 //show and not show corrispondent categories, divfor foreach cateogory NAME+LIST OF ARTISTS
-import Buttons from "../../components/Buttons.vue";
-import Card from "../../components/Card.vue";
-import DownloadButton from "../../components/DownloadButton.vue"
+//import Buttons from "../../components/Buttons.vue";
+//import DownloadButton from "../../components/DownloadButton.vue"
 
 export default {
-  title: 'Opera4u - Our Artists',
+  title: "Opera4u - Our Artists",
   name: "Artists",
   data() {
     return {
       categories: [],
-      selected: [],
+      selected: "",
       search: "",
       pdf: {},
+      baseUrl: "http://localhost:1337",
     };
   },
   components: {
-    Buttons,
-    Card,
-    DownloadButton
+    //Buttons,
+    //DownloadButton
   },
   methods: {
     //Grabs categories+artists from db and sets up
     //categories and selected arrays
-    async fetchArtists() {
+    async fetchCategories() {
       const res = await fetch("http://localhost:1337/categories", {
         method: "GET",
         headers: {
@@ -56,10 +86,7 @@ export default {
 
       this.categories = res;
 
-      for (let i = 1; i < this.categories.length + 1; i++)
-        this.selected[i] = false;
-
-      this.selected[0] = true;
+      console.log(this.categories);
     },
 
     //Turns one and just one button on, turning all the others off
@@ -83,43 +110,11 @@ export default {
       this.pdf = res;
       console.log(this.pdf);
     },
-
-    // //Download of a pdf
-    // forceFileDownload(response, title) {
-    //   console.log(title);
-    //   const url = window.URL.createObjectURL(
-    //     new Blob([response.data], {
-    //       type: "application/pdf",
-    //     })
-    //   );
-    //   const link = document.createElement("a");
-    //   link.href = url;
-    //   link.setAttribute("download", title);
-    //   document.body.appendChild(link);
-    //   link.click();
-    // },
-    // downloadWithAxios(proxy) {
-    //   const target_copy = Object.assign({}, proxy);
-    //   var title = proxy.name;
-    //   var url = target_copy.pdf.url;
-    //   console.log(url);
-    //   console.log(title);
-    //   axios({
-    //     method: "get",
-    //     baseURL: "http://localhost:1337",
-    //     url,
-    //     responseType: "blob",
-    //   })
-    //     .then((response) => {
-    //       this.forceFileDownload(response, title);
-    //     })
-    //     .catch((e) => console.log(e));
-    // },
   },
 
   //When visited, immediately starts setting up categories and artists
   created() {
-    this.fetchArtists();
+    this.fetchCategories();
     this.fetchPdf();
   },
 
@@ -127,13 +122,90 @@ export default {
     //computed array with all the selected categories inside
     //all case: no filter applied
     filteredCategories: function() {
-      if (this.selected[0]) return this.categories;
+      if (this.selected == "") return this.categories;
       else {
         return this.categories.filter((category) => {
-          return this.selected[category.id] === true;
+          return this.selected === category.displayName;
         });
       }
     },
   },
 };
 </script>
+
+<style lang="scss" scoped>
+$bg: #eedfcc;
+$text: #868686;
+$black: #121212;
+$white: #fff;
+$red: #770a00;
+$border: #ebebeb;
+$shadow: rgba(0, 0, 0, 0.2);
+
+#title {
+  font-size: 5vw;
+  padding-top: 3vw;
+  padding-bottom: 1vw;
+  @media (max-width: 40rem) {
+    font-size: 15vw;
+  }
+}
+
+.input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #868686;
+  font: 15px/1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  max-width: 50vw;
+  background-color: $white;
+  border: none;
+  border-radius: 100000000px;
+  box-shadow: 0 0.1875rem 0.8rem $shadow;
+  outline: none;
+  margin: 0;
+  box-sizing: border-box;
+  background-image: url(https://image.flaticon.com/icons/png/512/32/32195.png);
+  background-repeat: no-repeat;
+  background-size: 0.8em auto;
+  background-position: 0.7em center;
+  font-size: 1rem;
+
+  @supports (display: grid) {
+    @media (max-width: 40rem) {
+      margin-top: 1rem;
+      max-width: 80vw;
+    }
+  }
+}
+
+h2 {
+  font-weight: normal;
+}
+
+.cardImage {
+  height: 14em;
+  max-width: 14em;
+  border-radius: 2em;
+  box-shadow: 0 0.1875rem 0.8rem $shadow;
+  text-align: center;
+}
+
+p {
+  background: linear-gradient(180deg, #a6291e 0%, #640800 100%);
+  font-size: 5vw;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+img {
+  border-radius: .5em;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>

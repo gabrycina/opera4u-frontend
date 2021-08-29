@@ -8,11 +8,16 @@ import titleMixin from "./mixins/titleMixin";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faFacebookSquare } from "@fortawesome/fontawesome-free-brands";
+import { faInstagram } from "@fortawesome/fontawesome-free-brands";
+
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import VueSmoothScroll from "vue3-smooth-scroll";
 
 library.add(faBars);
 library.add(faChevronDown);
+library.add(faFacebookSquare);
+library.add(faInstagram);
 
 const app = createApp(App);
 

@@ -91,46 +91,66 @@
     <section id="news" class="my10">
       <w-flex class="column">
         <h1 class="headline pt3 pb4"><b>Latest News</b></h1>
-        <div class="divider">
+        <div v-if="recentNews.length != 0" class="divider">
           <w-divider></w-divider>
           <w-flex
             class="row pt6 xs12 text-left"
             :class="[isMobileHelper() ? 'column' : 'row']"
           >
             <HomeNewsArticle
+              v-if="recentNews.length >= 1"
+              :title="recentNews[0].title"
+              :image="recentNews[0].image.url"
+              :body="recentNews[0].body"
+              :artist="recentNews[0].artists[0].name"
+              :date="recentNews[0].date"
+              :id="recentNews[0].id"
               class="mr5 mb5 md6 xs12"
-              title="Oksana giving her debut at Bayreuther Festspiele"
-              image="https://i.ibb.co/dMSZFyJ/team.jpg"
-              :body="body"
-              artist="Oksana Lyniv"
-              :date="dateTmp"
             />
             <w-flex class="column md5 xs12">
               <HomeNewsArticle
-                title="Oksana giving her debut at Bayreuther Festspiele"
-                image="https://i.ibb.co/dMSZFyJ/team.jpg"
+                v-if="recentNews.length >= 2"
+                :title="recentNews[1].title"
+                :image="recentNews[1].image.url"
                 body=""
-                artist="Oksana Lyniv"
-                :date="dateTmp"
+                :artist="
+                  recentNews[1].artists.length
+                    ? recentNews[1].artists[0].name
+                    : ''
+                "
+                :date="recentNews[1].date"
+                :id="recentNews[1].id"
                 class="mr5 mb5 xs12"
               />
               <HomeNewsArticle
-                title="Oksana giving her debut at Bayreuther Festspiele"
-                image="https://i.ibb.co/dMSZFyJ/team.jpg"
+                v-if="recentNews.length >= 3"
+                :title="recentNews[2].title"
+                :image="recentNews[2].image.url"
                 body=""
-                artist="Oksana Lyniv"
-                :date="dateTmp"
+                :artist="
+                  recentNews[2].artists.length
+                    ? recentNews[2].artists[0].name
+                    : ''
+                "
+                :date="recentNews[2].date"
+                :id="recentNews[2].id"
                 class="mr5 mb5 xs12"
               />
             </w-flex>
             <HomeNewsArticle
+              v-if="recentNews.length >= 4"
+              :title="recentNews[3].title"
+              :image="recentNews[3].image.url"
+              :body="recentNews[3].body"
+              :artist="
+                recentNews[3].artists.length
+                  ? recentNews[3].artists[0].name
+                  : ''
+              "
+              :date="recentNews[3].date"
+              :id="recentNews[3].id"
               class="mb5 md4 xs12"
               :class="[isMobileHelper() ? '' : 'ml5']"
-              title="Oksana giving her debut at Bayreuther Festspiele"
-              image="https://i.ibb.co/dMSZFyJ/team.jpg"
-              :body="body"
-              artist="Oksana Lyniv"
-              :date="dateTmp"
             />
           </w-flex>
         </div>
@@ -153,9 +173,6 @@ export default {
       artists: [],
       heroText: "manage",
       baseUrl: "/src/",
-      dateTmp: this.currentDate(),
-      body:
-        "Oksana Lyniv giving her debut at Bayreuther Festspiele conducting the festive opening night of R. Wagner‘s Der Fliegende Oksana Lyniv giving her debut at Bayreuther Festspiele conducting the festive opening night of R. Wagner‘s Der Fliegende Oksana Lyniv giving her debut at Bayreuther Festspiele conducting the festive opening night of R. Wagner‘s Der Fliegende Oksana Lyniv giving her debut at Bayreuther Festspiele conducting the festive opening night of R. Wagner‘s Der Fliegende",
       windowWidth: window.innerWidth,
     };
   },
@@ -171,6 +188,7 @@ export default {
   methods: {
     async fetchRecentNews() {
       const NUMBER_OF_NEWS = 5;
+      this.recentNews = [];
 
       //Making GET request for news
       const res = await fetch("http://localhost:1337/news-articles", {
@@ -211,14 +229,6 @@ export default {
       }, 5000);
     },
 
-    //TODO REMOVE
-    currentDate() {
-      const current = new Date();
-      const date = `${current.getDate()}/${current.getMonth() +
-        1}/${current.getFullYear()}`;
-      return date;
-    },
-
     onResize() {
       this.windowWidth = window.innerWidth;
     },
@@ -227,10 +237,6 @@ export default {
   async created() {
     await this.fetchRecentNews();
     this.rollHeroText();
-  },
-
-  updated() {
-    this.fetchRecentNews();
   },
 };
 </script>

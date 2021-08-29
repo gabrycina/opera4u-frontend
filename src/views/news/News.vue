@@ -1,11 +1,7 @@
 <template>
-  <div class="about">
+  <div>
     <h1>News</h1>
-    <input
-      class="input"
-      placeholder="Search by title"
-      v-model="search"
-    />
+    <input class="input" placeholder="Search by title" v-model="search" />
     <w-flex class="column pt10 align-center">
       <div :key="newsArticle.id" v-for="newsArticle in filteredNews">
         <router-link
@@ -101,7 +97,7 @@ $shadow: rgba(0, 0, 0, 0.2);
   flex-direction: row;
   text-align: left;
   background: $white;
-  box-shadow: 0 0.1875rem .8rem $shadow;
+  box-shadow: 0 0.1875rem 0.8rem $shadow;
   border-radius: 0.375rem;
   overflow: hidden;
   height: 20vh;
@@ -143,6 +139,15 @@ $shadow: rgba(0, 0, 0, 0.2);
   margin: 0 0 0.5rem 0;
 }
 
+.post-description {
+  display: -webkit-box;
+  max-width: inherit;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media (max-width: 40rem) {
   #container {
     width: 18rem;
@@ -180,25 +185,32 @@ $shadow: rgba(0, 0, 0, 0.2);
   }
 
   @media (max-width: 40rem) {
+    .post-title {
+      font-size: 1.5rem;
+    }
+
     .blog-card {
       grid-template-columns: auto;
       grid-template-rows: 12rem 1fr;
       height: 55vh;
     }
+
+    .post-description {
+      font-size: 6vw;
+    }
   }
 }
 
 h1 {
-  font-size: 6vw;
+  font-size: 5vw;
   padding-top: 3vw;
   padding-bottom: 1vw;
-    @media (max-width: 40rem) {
-  font-size: 15vw;
+  @media (max-width: 40rem) {
+    font-size: 15vw;
   }
 }
 
-.input
-{
+.input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -212,19 +224,16 @@ h1 {
   border: none;
   padding: 10px 11px 11px 11px;
   border-radius: 100000000px;
-  box-shadow: 0 0.1875rem .8rem $shadow;
+  box-shadow: 0 0.1875rem 0.8rem $shadow;
   outline: none;
   margin: 0;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 
   @supports (display: grid) {
-
-
-  @media (max-width: 40rem) {
-    margin-top: 1rem;
-    max-width: 80vw;
+    @media (max-width: 40rem) {
+      margin-top: 1rem;
+      max-width: 80vw;
+    }
   }
 }
-}
-
 </style>
