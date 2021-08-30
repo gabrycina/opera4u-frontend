@@ -20,7 +20,7 @@
 
     <div :key="category.id" v-for="category in filteredCategories">
       <div class="divider">
-        <h1 class="pt10 pb3 text-left ole" style="font-weight: 300;">
+        <h1 class="pt10 pb3 text-left ole" style="font-weight: 300; word-wrap: break-word;">
           {{ category.displayName }}
         </h1>
         <w-divider></w-divider>
@@ -36,7 +36,7 @@
             :key="artist.id"
           >
             <router-link :to="{ name: 'Artist', params: { id: artist.id } }">
-              <w-flex class="column">
+              <w-flex class="column align-center">
                 <div class="cardImage xs12">
                   <img :src="baseUrl + artist.avatar.url" />
                 </div>

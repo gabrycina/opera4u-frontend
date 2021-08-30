@@ -9,21 +9,23 @@
         }"
       ></div>
     </w-flex>
-    <h1 class="mx10">{{ article.title }}</h1>
-    <p class="pt5 mx10">{{ article.body }}</p>
-    <FeaturedArtists :artists="article.artists"/>
+    <w-flex class="column justify-center align-center">
+      <h1 class="mx10">{{ article.title }}</h1>
+      <p class="pt5 mx10">{{ article.body }}</p>
+      <FeaturedArtists :artists="article.artists" />
+    </w-flex>
   </div>
 </template>
 
 <script>
-import FeaturedArtists from '../../components/FeaturedArtists/FeaturedArtists.vue'
+import FeaturedArtists from "../../components/FeaturedArtists/FeaturedArtists.vue";
 
 export default {
   title: "Opera4u - News",
   name: "NewsArticle",
   props: ["id"],
   components: {
-    FeaturedArtists
+    FeaturedArtists,
   },
   data() {
     return {
@@ -45,7 +47,7 @@ export default {
       ).then((response) => response.json());
 
       this.article = res[0];
-      console.log(this.article)
+      console.log(this.article);
     },
   },
   async created() {
@@ -67,7 +69,12 @@ h1 {
 
 p {
   color: #868686;
-  max-width: inherit;
-  font-size: 1.5rem;
+  max-width: 60vw;
+  font-size: 2vw;
+  @supports (display: grid) {
+    @media (max-width: 40rem) {
+      font-size: 5vw;
+    }
+  }
 }
 </style>

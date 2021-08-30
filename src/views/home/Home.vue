@@ -211,7 +211,8 @@ export default {
         if (obj.homepage) {
           this.recentNews.push(obj);
           for (let j = 0; j < obj.artists.length; j++) {
-            this.artists.push(obj.artists[j]);
+            if (!this.containsArtist(obj.artists[j], this.artists))
+              this.artists.push(obj.artists[j]);
           }
           i++;
         }
@@ -220,6 +221,17 @@ export default {
       //Debug print
       console.log("Objets of (max 5) most recent news");
       console.log(this.recentNews);
+    },
+
+    containsArtist(obj, list) {
+      var i;
+      for (i = 0; i < list.length; i++) {
+        if (list[i].name === obj.name) {
+          return true;
+        }
+      }
+
+      return false;
     },
 
     rollHeroText() {
