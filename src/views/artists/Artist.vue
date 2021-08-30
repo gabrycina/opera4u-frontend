@@ -34,16 +34,31 @@
 
           <w-divider class="mr12"></w-divider>
           <w-flex class="row mt2">
-            <a v-if="artist.facebookLink" style='color: inherit;' :href="artist.facebookLink" target='_blank'>
+            <a
+              v-if="artist.facebookLink"
+              style="color: inherit;"
+              :href="artist.facebookLink"
+              target="_blank"
+            >
               <font-awesome-icon class="black" :icon="['fab', 'facebook']" />
             </a>
-            <a v-if="artist.instagramLink" style='color: inherit;' :href="artist.instagramLink" target='_blank'>
+            <a
+              v-if="artist.instagramLink"
+              style="color: inherit;"
+              :href="artist.instagramLink"
+              target="_blank"
+            >
               <font-awesome-icon
                 class="black ml2"
                 :icon="['fab', 'instagram']"
               />
             </a>
-            <a v-if="artist.youtubeLink" style='color: inherit;' :href="artist.youtubeLink" target='_blank'>
+            <a
+              v-if="artist.youtubeLink"
+              style="color: inherit;"
+              :href="artist.youtubeLink"
+              target="_blank"
+            >
               <font-awesome-icon class="black ml2" :icon="['fab', 'youtube']" />
             </a>
           </w-flex>
@@ -59,6 +74,38 @@
               {{ artist.category[0].displayName }}
             </h2>
             <w-divider class="my3"></w-divider>
+            <w-flex class="row justify-start mb3">
+              <div
+                v-if="artist.bioEnglish"
+                class="button"
+                :class="[
+                  bioSelected == 'en' ? 'button__active' : 'button__inactive',
+                ]"
+                @click="changeActiveBio('en')"
+              >
+                EN
+              </div>
+              <div
+                v-if="artist.bioGerman"
+                class="button ml3"
+                :class="[
+                  bioSelected == 'de' ? 'button__active' : 'button__inactive',
+                ]"
+                @click="changeActiveBio('de')"
+              >
+                DE
+              </div>
+              <div
+                v-if="artist.bioItalian"
+                class="button ml3"
+                :class="[
+                  bioSelected == 'it' ? 'button__active' : 'button__inactive',
+                ]"
+                @click="changeActiveBio('it')"
+              >
+                IT
+              </div>
+            </w-flex>
             <b>
               <read-more
                 class="text"
@@ -177,7 +224,8 @@ export default {
     return {
       artist: {},
       baseUrl: "http://localhost:1337",
-      bio: this.artist ? this.artist.bioEnglish : "",
+      bio: "",
+      bioSelected: "en",
       data: [],
       press: [],
       reload: 0,
@@ -195,6 +243,15 @@ export default {
     onResize() {
       this.windowWidth = window.innerWidth;
     },
+
+    changeActiveBio(nextActive) {
+      this.bioSelected = nextActive;
+      if (this.bioSelected == "en") this.bio = this.artist.bioEnglish;
+      else if (this.bioSelected == "it") this.bio = this.artist.bioItalian;
+      else this.bio = this.artist.bioGerman;
+    },
+
+    selectedBio() {},
 
     async fetchArtist() {
       const res = await fetch(
@@ -234,6 +291,7 @@ export default {
   },
   async created() {
     await this.fetchArtist();
+    this.changeActiveBio("en");
   },
 };
 </script>
@@ -414,6 +472,33 @@ a:-webkit-any-link {
 
     p {
       font-size: 2.5vw;
+    }
+  }
+}
+
+.button {
+  text-align: center;
+  font-size: 1.2vw;
+  width: 6vw;
+  height: 1.5vw;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+
+  &__active {
+    background: linear-gradient(180deg, #a6291e 0%, #640800 100%);
+    color: white;
+  }
+
+  &__inactive {
+    background-color: white;
+    color: black;
+  }
+
+  @supports (display: grid) {
+    @media (max-width: 40rem) {
+      width: 20vw;
+      height: 6vw;
+      font-size: 5vw;
     }
   }
 }
