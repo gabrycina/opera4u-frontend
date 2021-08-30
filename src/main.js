@@ -7,6 +7,7 @@ import "animate.css";
 import titleMixin from "./mixins/titleMixin";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookSquare } from "@fortawesome/fontawesome-free-brands";
 import { faInstagram } from "@fortawesome/fontawesome-free-brands";
@@ -20,6 +21,7 @@ library.add(faBars);
 library.add(faChevronDown);
 library.add(faFacebookSquare);
 library.add(faInstagram);
+library.add(faEnvelope);
 
 const app = createApp(App);
 

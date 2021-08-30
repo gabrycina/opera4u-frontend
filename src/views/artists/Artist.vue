@@ -251,8 +251,6 @@ export default {
       else this.bio = this.artist.bioGerman;
     },
 
-    selectedBio() {},
-
     async fetchArtist() {
       const res = await fetch(
         "http://localhost:1337/artists?id=" + this.id + "",
