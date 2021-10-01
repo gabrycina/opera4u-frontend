@@ -74,6 +74,7 @@ p {
   @supports (display: grid) {
     @media (max-width: 40rem) {
       font-size: 5vw;
+      text-align: left;
     }
   }
 }
