@@ -37,8 +37,8 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: '${{ steps.artifact.outputs.time }}'
-          path: dist
-          
+          path: build
+
       - name: Start Cleavr Deployment
         uses: fjogeleit/http-request-action@master
         with:
