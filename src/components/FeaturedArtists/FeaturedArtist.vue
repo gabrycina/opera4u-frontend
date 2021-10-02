@@ -25,7 +25,7 @@ export default {
   name: "FeaturedArtist",
   data() {
     return {
-      baseUrl: "http://localhost:1337",
+      baseUrl: "http://localhost:8787",
       imageProps: {
         ratio: 20 / 100,
       },

@@ -37,7 +37,7 @@ export default {
     return {
       news: [],
       search: "",
-      baseUrl: "http://localhost:1337",
+      baseUrl: "http://localhost:8787",
       imageProps: {
         lazy: true,
         ratio: 15 / 20,
@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     async fetchNews() {
-      const res = await fetch("http://localhost:1337/news-articles", {
+      const res = await fetch("http://localhost:8787/news-articles", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

@@ -223,7 +223,7 @@ export default {
   data() {
     return {
       artist: {},
-      baseUrl: "http://localhost:1337",
+      baseUrl: "http://localhost:8787",
       bio: "",
       bioSelected: "en",
       data: [],
@@ -253,7 +253,7 @@ export default {
 
     async fetchArtist() {
       const res = await fetch(
-        "http://localhost:1337/artists?id=" + this.id + "",
+        "http://localhost:8787/artists?id=" + this.id + "",
         {
           method: "GET",
           headers: {

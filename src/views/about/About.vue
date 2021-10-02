@@ -58,13 +58,13 @@ export default {
   name: "About",
   data() {
     return {
-      baseUrl: "http://localhost:1337",
+      baseUrl: "http://localhost:8787",
       team: [],
     };
   },
   methods: {
     async fetchTeam() {
-      const res = await fetch("http://localhost:1337/agents", {
+      const res = await fetch("http://localhost:8787/agents", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

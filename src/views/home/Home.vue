@@ -191,7 +191,7 @@ export default {
       this.recentNews = [];
 
       //Making GET request for news
-      const res = await fetch("http://localhost:1337/news-articles", {
+      const res = await fetch("http://localhost:8787/news-articles", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

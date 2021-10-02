@@ -37,7 +37,7 @@ export default {
         contain: false,
         ratio: this.hasBody() ? 2 / 4 : 1 / 4,
       },
-      baseUrl: "http://localhost:1337",
+      baseUrl: "http://localhost:8787",
     };
   },
   props: {

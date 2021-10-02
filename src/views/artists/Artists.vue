@@ -66,7 +66,7 @@ export default {
       selected: "",
       search: "",
       pdf: {},
-      baseUrl: "http://localhost:1337",
+      baseUrl: "http://localhost:8787",
     };
   },
   components: {
@@ -77,7 +77,7 @@ export default {
     //Grabs categories+artists from db and sets up
     //categories and selected arrays
     async fetchCategories() {
-      const res = await fetch("http://localhost:1337/categories", {
+      const res = await fetch("http://localhost:8787/categories", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -100,7 +100,7 @@ export default {
 
     //gets pdf object from cms media library
     async fetchPdf() {
-      const res = await fetch("http://localhost:1337/all-artists", {
+      const res = await fetch("http://localhost:8787/all-artists", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

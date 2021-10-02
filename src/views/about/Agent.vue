@@ -114,7 +114,7 @@ export default {
   data() {
     return {
       agent: {},
-      baseUrl: "http://localhost:1337",
+      baseUrl: "http://localhost:8787",
       bio: "",
       bioSelected: "en",
       reload: 0,
@@ -135,7 +135,7 @@ export default {
 
     async fetchAgent() {
       const res = await fetch(
-        "http://localhost:1337/agents?id=" + this.id + "",
+        "http://localhost:8787/agents?id=" + this.id + "",
         {
           method: "GET",
           headers: {
