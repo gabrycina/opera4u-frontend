@@ -36,7 +36,7 @@ export default {
       console.log(title);
       axios({
         method: "get",
-        baseURL: "http://localhost:8787",
+        baseURL: "http://78.47.40.205:8787",
         url,
         responseType: "blob",
       })
