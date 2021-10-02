@@ -25,7 +25,7 @@ export default {
   name: "FeaturedArtist",
   data() {
     return {
-      baseUrl: "http://78.47.40.205:8787",
+      baseUrl: "https://78.47.40.205:8787",
       imageProps: {
         ratio: 20 / 100,
       },

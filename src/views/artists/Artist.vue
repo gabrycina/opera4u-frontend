@@ -223,7 +223,7 @@ export default {
   data() {
     return {
       artist: {},
-      baseUrl: "http://78.47.40.205:8787",
+      baseUrl: "https://78.47.40.205:8787",
       bio: "",
       bioSelected: "en",
       data: [],
@@ -253,7 +253,7 @@ export default {
 
     async fetchArtist() {
       const res = await fetch(
-        "http://78.47.40.205:8787/artists?id=" + this.id + "",
+        "https://78.47.40.205:8787/artists?id=" + this.id + "",
         {
           method: "GET",
           headers: {

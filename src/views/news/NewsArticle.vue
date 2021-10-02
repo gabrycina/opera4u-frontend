@@ -31,13 +31,13 @@ export default {
     return {
       loading: false,
       article: {},
-      baseUrl: "http://78.47.40.205:8787",
+      baseUrl: "https://78.47.40.205:8787",
     };
   },
   methods: {
     async fetchArticle() {
       const res = await fetch(
-        "http://78.47.40.205:8787/news-articles?id=" + this.id + "",
+        "https://78.47.40.205:8787/news-articles?id=" + this.id + "",
         {
           method: "GET",
           headers: {
