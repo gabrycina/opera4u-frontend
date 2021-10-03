@@ -36,7 +36,7 @@ export default {
       console.log(title);
       axios({
         method: "get",
-        baseURL: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787",
+        baseURL: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks",
         url,
         responseType: "blob",
       })

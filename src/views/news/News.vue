@@ -37,7 +37,7 @@ export default {
     return {
       news: [],
       search: "",
-      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787",
+      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks",
       imageProps: {
         lazy: true,
         ratio: 15 / 20,
@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     async fetchNews() {
-      const res = await fetch("https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787/news-articles", {
+      const res = await fetch("https://ui7v6qcqt2nkhlbd2574.cleaver.rocks/news-articles", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

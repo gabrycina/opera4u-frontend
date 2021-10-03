@@ -25,7 +25,7 @@ export default {
   name: "FeaturedArtist",
   data() {
     return {
-      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787",
+      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks",
       imageProps: {
         ratio: 20 / 100,
       },

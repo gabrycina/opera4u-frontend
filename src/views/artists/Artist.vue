@@ -223,7 +223,7 @@ export default {
   data() {
     return {
       artist: {},
-      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787",
+      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks",
       bio: "",
       bioSelected: "en",
       data: [],
@@ -253,7 +253,7 @@ export default {
 
     async fetchArtist() {
       const res = await fetch(
-        "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787/artists?id=" + this.id + "",
+        "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks/artists?id=" + this.id + "",
         {
           method: "GET",
           headers: {

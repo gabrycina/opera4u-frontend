@@ -66,7 +66,7 @@ export default {
       selected: "",
       search: "",
       pdf: {},
-      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787",
+      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks",
     };
   },
   components: {
@@ -77,7 +77,7 @@ export default {
     //Grabs categories+artists from db and sets up
     //categories and selected arrays
     async fetchCategories() {
-      const res = await fetch("https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787/categories", {
+      const res = await fetch("https://ui7v6qcqt2nkhlbd2574.cleaver.rocks/categories", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -100,7 +100,7 @@ export default {
 
     //gets pdf object from cms media library
     async fetchPdf() {
-      const res = await fetch("https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787/all-artists", {
+      const res = await fetch("https://ui7v6qcqt2nkhlbd2574.cleaver.rocks/all-artists", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

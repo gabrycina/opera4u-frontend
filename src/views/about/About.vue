@@ -58,13 +58,13 @@ export default {
   name: "About",
   data() {
     return {
-      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787",
+      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks",
       team: [],
     };
   },
   methods: {
     async fetchTeam() {
-      const res = await fetch("https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787/agents", {
+      const res = await fetch("https://ui7v6qcqt2nkhlbd2574.cleaver.rocks/agents", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
