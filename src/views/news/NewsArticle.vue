@@ -31,13 +31,13 @@ export default {
     return {
       loading: false,
       article: {},
-      baseUrl: "https://78.47.40.205:8787",
+      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787",
     };
   },
   methods: {
     async fetchArticle() {
       const res = await fetch(
-        "https://78.47.40.205:8787/news-articles?id=" + this.id + "",
+        "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787/news-articles?id=" + this.id + "",
         {
           method: "GET",
           headers: {

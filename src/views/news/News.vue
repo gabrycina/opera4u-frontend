@@ -37,7 +37,7 @@ export default {
     return {
       news: [],
       search: "",
-      baseUrl: "https://78.47.40.205:8787",
+      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787",
       imageProps: {
         lazy: true,
         ratio: 15 / 20,
@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     async fetchNews() {
-      const res = await fetch("https://78.47.40.205:8787/news-articles", {
+      const res = await fetch("https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787/news-articles", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

@@ -37,7 +37,7 @@ export default {
         contain: false,
         ratio: this.hasBody() ? 2 / 4 : 1 / 4,
       },
-      baseUrl: "https://78.47.40.205:8787",
+      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787",
     };
   },
   props: {

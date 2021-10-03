@@ -114,7 +114,7 @@ export default {
   data() {
     return {
       agent: {},
-      baseUrl: "https://78.47.40.205:8787",
+      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787",
       bio: "",
       bioSelected: "en",
       reload: 0,
@@ -135,7 +135,7 @@ export default {
 
     async fetchAgent() {
       const res = await fetch(
-        "https://78.47.40.205:8787/agents?id=" + this.id + "",
+        "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks:8787/agents?id=" + this.id + "",
         {
           method: "GET",
           headers: {
