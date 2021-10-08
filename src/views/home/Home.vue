@@ -164,7 +164,10 @@
 import HomeNewsArticle from "@/views/home/components/HomeNewsArticle.vue";
 import FeaturedArtists from "@/components/FeaturedArtists/FeaturedArtists.vue";
 
+ const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
+
 export default {
+  
   title: "Opera4u - Artist Management",
   name: "Home",
   data() {
@@ -186,12 +189,13 @@ export default {
     });
   },
   methods: {
+    
     async fetchRecentNews() {
       const NUMBER_OF_NEWS = 5;
       this.recentNews = [];
 
       //Making GET request for news
-      const res = await fetch("https://ui7v6qcqt2nkhlbd2574.cleaver.rocks/news-articles", {
+      const res = await fetch(`${baseAPI}/news-articles`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

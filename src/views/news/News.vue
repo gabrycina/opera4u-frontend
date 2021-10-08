@@ -30,6 +30,7 @@
 </template>
 
 <script>
+ const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 export default {
   title: "Opera4u - News",
   name: "News",
@@ -37,7 +38,7 @@ export default {
     return {
       news: [],
       search: "",
-      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks",
+      baseUrl: process.env.VUE_APP_STRAPI_BASE_API,
       imageProps: {
         lazy: true,
         ratio: 15 / 20,
@@ -46,7 +47,7 @@ export default {
   },
   methods: {
     async fetchNews() {
-      const res = await fetch("https://ui7v6qcqt2nkhlbd2574.cleaver.rocks/news-articles", {
+      const res = await fetch(`${baseAPI}/news-articles`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
