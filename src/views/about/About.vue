@@ -53,18 +53,19 @@
 </template>
 
 <script>
+ const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 export default {
   title: "Opera4u - About Us",
   name: "About",
   data() {
     return {
-      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks",
+      baseUrl: baseAPI,
       team: [],
     };
   },
   methods: {
     async fetchTeam() {
-      const res = await fetch("https://ui7v6qcqt2nkhlbd2574.cleaver.rocks/agents", {
+      const res = await fetch(`${baseAPI}/agents`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

@@ -19,13 +19,14 @@
 </template>
 
 <script>
+ const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 import HorizontalCard from "../HorizontalCard.vue";
 
 export default {
   name: "FeaturedArtist",
   data() {
     return {
-      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks",
+      baseUrl: baseAPI,
       imageProps: {
         ratio: 20 / 100,
       },

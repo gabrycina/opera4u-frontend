@@ -216,6 +216,7 @@
 <script>
 import VueHorizontal from "vue-horizontal";
 import HorizontalCard from "../../components/HorizontalCard.vue";
+const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 
 export default {
   name: "Artist",
@@ -223,7 +224,7 @@ export default {
   data() {
     return {
       artist: {},
-      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks",
+      baseUrl: baseAPI,
       bio: "",
       bioSelected: "en",
       data: [],
@@ -253,7 +254,7 @@ export default {
 
     async fetchArtist() {
       const res = await fetch(
-        "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks/artists?id=" + this.id + "",
+        `${baseAPI}/artists?id=` + this.id + "",
         {
           method: "GET",
           headers: {
