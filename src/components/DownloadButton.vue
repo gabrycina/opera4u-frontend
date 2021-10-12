@@ -6,7 +6,7 @@
 
 <script>
 import axios from "axios";
-
+ const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 export default {
   name: "DownloadButton",
   props: {
@@ -36,7 +36,7 @@ export default {
       console.log(title);
       axios({
         method: "get",
-        baseURL: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks",
+        baseURL: baseAPI,
         url,
         responseType: "blob",
       })

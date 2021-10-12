@@ -29,6 +29,7 @@
 </template>
 
 <script>
+const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 export default {
   name: "NewsArticle",
   data() {
@@ -37,7 +38,7 @@ export default {
         contain: false,
         ratio: this.hasBody() ? 2 / 4 : 1 / 4,
       },
-      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks",
+      baseUrl: baseAPI,
     };
   },
   props: {

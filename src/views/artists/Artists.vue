@@ -56,7 +56,7 @@
 //show and not show corrispondent categories, divfor foreach cateogory NAME+LIST OF ARTISTS
 //import Buttons from "../../components/Buttons.vue";
 //import DownloadButton from "../../components/DownloadButton.vue"
-
+const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 export default {
   title: "Opera4u - Our Artists",
   name: "Artists",
@@ -66,7 +66,7 @@ export default {
       selected: "",
       search: "",
       pdf: {},
-      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks",
+      baseUrl: baseAPI,
     };
   },
   components: {
@@ -77,7 +77,7 @@ export default {
     //Grabs categories+artists from db and sets up
     //categories and selected arrays
     async fetchCategories() {
-      const res = await fetch("https://ui7v6qcqt2nkhlbd2574.cleaver.rocks/categories", {
+      const res = await fetch(`${baseAPI}/categories`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -100,7 +100,7 @@ export default {
 
     //gets pdf object from cms media library
     async fetchPdf() {
-      const res = await fetch("https://ui7v6qcqt2nkhlbd2574.cleaver.rocks/all-artists", {
+      const res = await fetch(`${baseAPI}/all-artists`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

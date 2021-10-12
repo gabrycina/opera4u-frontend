@@ -108,13 +108,14 @@
 </template>
 
 <script>
+ const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 export default {
   name: "Agent",
   props: ["id"],
   data() {
     return {
       agent: {},
-      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks",
+      baseUrl: baseAPI,
       bio: "",
       bioSelected: "en",
       reload: 0,
@@ -135,7 +136,7 @@ export default {
 
     async fetchAgent() {
       const res = await fetch(
-        "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks/agents?id=" + this.id + "",
+        baseAPI + this.id + "",
         {
           method: "GET",
           headers: {

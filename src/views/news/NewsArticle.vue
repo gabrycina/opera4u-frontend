@@ -19,7 +19,7 @@
 
 <script>
 import FeaturedArtists from "../../components/FeaturedArtists/FeaturedArtists.vue";
-
+const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 export default {
   title: "Opera4u - News",
   name: "NewsArticle",
@@ -31,13 +31,13 @@ export default {
     return {
       loading: false,
       article: {},
-      baseUrl: "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks",
+      baseUrl: process.env.VUE_APP_STRAPI_BASE_API,
     };
   },
   methods: {
     async fetchArticle() {
       const res = await fetch(
-        "https://ui7v6qcqt2nkhlbd2574.cleaver.rocks/news-articles?id=" + this.id + "",
+        `${baseAPI}/news-articles?id=` + this.id + "",
         {
           method: "GET",
           headers: {
