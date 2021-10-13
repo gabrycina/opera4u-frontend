@@ -5,15 +5,40 @@
       class="hero justify-center"
       :class="[isMobileHelper() ? 'column' : 'row']"
     >
-      <div class="xs12 md6 lg6" style="display: flex;">
-        <img
-          class="heroImage xs10"
-          style="float:right;"
-          src="@/assets/hero.jpg"
-          alt=""
-        />
+      <!-- TODO Change with carousel -->
+      <div class="xs12 md6 lg6 align-center justify-center">
+        <transition
+          v-if="heroImages[iterator] != undefined"
+          mode="out-in"
+          enter-active-class="animate__animated animate__fadeIn"
+          leave-active-class="animate__animated animate__fadeOut"
+          :duration="{ enter: 2000, leave: 1000 }"
+        >
+            <div v-if="iterator % 2 == 1">
+              <img
+                class="heroImage xs10"
+                :src="baseUrl + heroImages[iterator].url"
+                alt=""
+              />
+            </div>
+            <div v-else-if="iterator % 2 == 0 && iterator != 4">
+              <img
+                class="heroImage xs10"
+                :src="baseUrl + heroImages[iterator].url"
+                alt=""
+              />
+            </div>
+            <div v-else-if="iterator == 4">
+              <img
+                class="heroImage xs10"
+                :src="baseUrl + heroImages[iterator].url"
+                alt=""
+              />
+            </div>
+        </transition>
       </div>
-      <div class="xs12 md6 lg6" :class="[isMobileHelper() ? 'mt12 py12' : '']">
+
+      <div class="xs12 md6 lg6" :class="[isMobileHelper() ? 'mt12 py4' : '']">
         <div class="heroText">
           <w-flex
             class="column"
@@ -24,13 +49,13 @@
             ]"
             shrink
           >
-            <h2>Opera4u.com</h2>
-            <h1 class="text-left" style="white-space: nowrap;">
+            <h1>Opera4u.com</h1>
+            <h2 class="text-left" style="white-space: nowrap;">
               We
               <transition
                 mode="out-in"
                 enter-active-class="animate__animated animate__fadeInDown"
-                leave-active-class="animate__animated animate__fadeOutUp"
+                leave-active-class="animate__animated animate__fadeOutUp "
               >
                 <span
                   v-if="heroText == 'manage'"
@@ -43,7 +68,7 @@
                 }}</span>
               </transition>
               artists
-            </h1>
+            </h2>
           </w-flex>
         </div>
       </div>
@@ -82,7 +107,7 @@
       </w-flex>
     </section>
 
-    <w-flex class="row py12 justify-center">
+    <w-flex class="row py8 justify-center">
       <a href="#news" v-smooth-scroll>
         <font-awesome-icon class="arrow1 black" icon="chevron-down" size="5x" />
       </a>
@@ -164,18 +189,19 @@
 import HomeNewsArticle from "@/views/home/components/HomeNewsArticle.vue";
 import FeaturedArtists from "@/components/FeaturedArtists/FeaturedArtists.vue";
 
- const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
+const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 
 export default {
-  
   title: "Opera4u - Artist Management",
   name: "Home",
   data() {
     return {
       recentNews: [],
       artists: [],
+      heroImages: [],
       heroText: "manage",
-      baseUrl: "/src/",
+      iterator: 0,
+      baseUrl: baseAPI,
       windowWidth: window.innerWidth,
     };
   },
@@ -189,7 +215,18 @@ export default {
     });
   },
   methods: {
-    
+    async fetchHeroImages() {
+      const res = await fetch(`${baseAPI}/hero-images`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((response) => response.json());
+
+      this.heroImages = res.pop().images;
+      console.log(this.heroImages);
+    },
+
     async fetchRecentNews() {
       const NUMBER_OF_NEWS = 5;
       this.recentNews = [];
@@ -242,6 +279,13 @@ export default {
       setInterval(() => {
         if (this.heroText === "manage") this.heroText = "provide";
         else this.heroText = "manage";
+      }, 2500);
+    },
+
+    rollHeroImage() {
+      setInterval(() => {
+        if (this.iterator === 4) this.iterator = 0;
+        else this.iterator++;
       }, 5000);
     },
 
@@ -251,8 +295,10 @@ export default {
   },
 
   async created() {
+    await this.fetchHeroImages();
     await this.fetchRecentNews();
     this.rollHeroText();
+    this.rollHeroImage();
   },
 };
 </script>
@@ -266,6 +312,8 @@ export default {
   -webkit-box-shadow: 11px 16px 23px -6px rgba(0, 0, 0, 0.41);
   box-shadow: 11px 16px 23px -6px rgba(0, 0, 0, 0.41);
   margin: auto;
+  height: 50vh;
+  object-fit: cover;
 }
 
 .heroImageContainer {
@@ -351,8 +399,11 @@ export default {
       padding-top: 5vh;
     }
 
+    .heroImage {
+      height: 40vh;
+    }
+
     .heroText {
-      padding-top: 10vw;
       padding-left: 10vw;
       padding-right: 10vw;
 
@@ -367,7 +418,7 @@ export default {
 
     .aboutText {
       p {
-        font-size: 10vw;
+        font-size: 6vw !important;
         text-align: left;
       }
 

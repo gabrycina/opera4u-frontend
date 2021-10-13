@@ -37,7 +37,7 @@
           :key="agent.id"
         >
           <router-link :to="{ name: 'Agent', params: { id: agent.id } }">
-            <w-flex class="column">
+            <w-flex class="column align-center">
               <div class="cardImage xs12">
                 <img :src="baseUrl + agent.avatar.url" />
               </div>

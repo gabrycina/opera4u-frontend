@@ -15,17 +15,17 @@
             <w-flex
               class="row contactContainer mt2 mb4 justify-space-evenly align-center"
             >
-              <div class="contact" v-if="artist.agent[0].avatar">
+              <div class="contact ml2" v-if="artist.agent[0].avatar">
                 <img
                   style="object-fit:cover;"
                   :src="baseUrl + artist.agent[0].avatar.url"
                 />
               </div>
-              <h1 id="contactText" style="white-space: nowrap;">
+              <h1 id="contactText" class="ml2">
                 {{ artist.agent[0].name }}
               </h1>
               <font-awesome-icon
-                class="black ml3"
+                class="black mr3 ml3"
                 icon="chevron-down"
                 rotation="270"
               />

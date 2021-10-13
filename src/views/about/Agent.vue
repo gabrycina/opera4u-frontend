@@ -15,11 +15,11 @@
               <div>
                 <font-awesome-icon class="black mx3" icon="envelope" />
               </div>
-              <h1 id="contactText" style="white-space: nowrap;">
+              <h1 id="contactText">
                 {{ agent.name }}
               </h1>
               <font-awesome-icon
-                class="black ml3"
+                class="black mr5"
                 icon="chevron-down"
                 rotation="270"
               />
@@ -108,7 +108,7 @@
 </template>
 
 <script>
- const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
+const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 export default {
   name: "Agent",
   props: ["id"],
@@ -136,7 +136,7 @@ export default {
 
     async fetchAgent() {
       const res = await fetch(
-        baseAPI + this.id + "",
+        baseAPI + "/agents/" + this.id,
         {
           method: "GET",
           headers: {
@@ -145,8 +145,9 @@ export default {
         }
       ).then((response) => response.json());
 
-      this.agent = res[0];
-      console.log(this.agent);
+
+      this.agent = res;
+      console.log(res);
     },
   },
   mounted() {

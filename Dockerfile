@@ -7,7 +7,7 @@ COPY . /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 RUN yarn config delete proxy
-Run npm config rm proxy
+RUN npm config rm proxy
 
 RUN npm config rm https-proxy
 
