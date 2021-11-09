@@ -69,7 +69,8 @@ export default {
 
   p {
     color: #868686;
-    font-size: 1.4vw;
+    font-size: 1.3vw;
+    font-weight: 300;
     display: -webkit-box;
     max-width: inherit;
     -webkit-line-clamp: 3;
@@ -84,6 +85,7 @@ export default {
 }
 
 #artist {
+  transform: translate(0px, 3px);
   background: linear-gradient(180deg, #a6291e 0%, #640800 100%);
   background-clip: text;
   -webkit-background-clip: text;

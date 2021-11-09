@@ -48,6 +48,8 @@ export default {
 
 .artistName {
   font-size: 2vw;
+  font-weight: 400;
+  margin-bottom: .2em;
   white-space: nowrap;
 }
 
@@ -62,15 +64,14 @@ max-width: 90vw;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 400;
   }
 }
 
 @supports (display: grid) {
-
-
   @media (max-width: 60rem) {
     .artistName {
-      font-size: 4vw;
+      font-size: 3vw;
     }
 
     p {

@@ -115,7 +115,7 @@
 
     <section id="news" class="my10">
       <w-flex class="column">
-        <h1 class="headline pt3 pb4"><b>Latest News</b></h1>
+        <h1 class="headline pt3 pb4" style="font-weight: 300">Latest News</h1>
         <div v-if="recentNews.length != 0" class="divider">
           <w-divider></w-divider>
           <w-flex
@@ -277,16 +277,16 @@ export default {
 
     rollHeroText() {
       setInterval(() => {
-        if (this.heroText === "manage") this.heroText = "provide";
+        if (this.heroText === "manage") this.heroText = " provide ";
         else this.heroText = "manage";
-      }, 2500);
+      }, 3500);
     },
 
     rollHeroImage() {
       setInterval(() => {
         if (this.iterator === 4) this.iterator = 0;
         else this.iterator++;
-      }, 5000);
+      }, 3500);
     },
 
     onResize() {
@@ -354,12 +354,13 @@ export default {
 
   p {
     color: #868686;
-    font-size: 1.8vw;
+    font-size: 1vw;
   }
 
   h1 {
+    font-weight: 300;
     text-align: right;
-    font-size: 4vw;
+    font-size: 3vw;
   }
 }
 
