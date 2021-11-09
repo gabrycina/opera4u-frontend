@@ -6,7 +6,6 @@
           <div class="cardImage xs12" v-if="agent.avatar">
             <img :src="baseUrl + agent.avatar.url" />
           </div>
-          <p id="copy" class="pt2 pl2 text-left">Photo by @{{ agent.name }}</p>
           <h3 class="gradientText pt4">Email</h3>
           <a :href="'mailto:' + agent.email">
             <w-flex
@@ -68,29 +67,21 @@
                 IT
               </div>
             </w-flex>
-            <b>
-              <read-more
-                class="text"
-                more-str="Read More"
-                :text="bio"
-                link="#"
-                less-str="Read Less"
-                :max-chars="380"
-              ></read-more>
-            </b>
+            <read-more class="text" :text="bio" :max-chars="380"></read-more>
           </div>
         </w-flex>
       </w-flex>
     </section>
     <section class="container">
-      <h1 class="pt10 pb3 text-left ole" style="font-weight: 300;">
-        <b>
-          Managed Artist
-        </b>
+      <h1 class="mt5 pb3 text-left ole" style="font-weight: 300;">
+        Managed Artists
       </h1>
       <w-divider></w-divider>
       <div class="managedArtists">
-        <w-flex style="max-height: 20rem" class="column wrap mt4 justify-start align-start">
+        <w-flex
+          style="max-height: 20rem"
+          class="column wrap mt4 justify-start align-start"
+        >
           <div v-for="artist in agent.artists" :key="artist">
             <div v-if="artist.avatar && artist.bioEnglish">
               <router-link :to="{ name: 'Artist', params: { id: artist.id } }">
@@ -98,7 +89,7 @@
               </router-link>
             </div>
             <div v-else>
-                <h1 class="my1 inactive">{{ artist.name }}</h1>
+              <h1 class="my1 inactive">{{ artist.name }}</h1>
             </div>
           </div>
         </w-flex>
@@ -108,6 +99,8 @@
 </template>
 
 <script>
+import ReadMore from "../../components/ReadMore.vue";
+
 const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 export default {
   name: "Agent",
@@ -122,6 +115,9 @@ export default {
       windowWidth: window.innerWidth,
     };
   },
+  components: {
+    ReadMore,
+  },
   methods: {
     onResize() {
       this.windowWidth = window.innerWidth;
@@ -135,16 +131,12 @@ export default {
     },
 
     async fetchAgent() {
-      const res = await fetch(
-        baseAPI + "/agents/" + this.id,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      ).then((response) => response.json());
-
+      const res = await fetch(baseAPI + "/agents/" + this.id, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((response) => response.json());
 
       this.agent = res;
       console.log(res);
@@ -248,6 +240,7 @@ h3 {
 
 .text {
   color: #868686;
+  font-weight: 300;
   font-size: 1.4vw;
   @supports (display: grid) {
     @media (max-width: 40rem) {
@@ -349,6 +342,7 @@ a:-webkit-any-link {
   height: 1.5vw;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
   border-radius: 14px;
+  font-weight: 400;
 
   &__active {
     background: linear-gradient(180deg, #a6291e 0%, #640800 100%);

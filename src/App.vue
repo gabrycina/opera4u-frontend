@@ -1,6 +1,6 @@
 <template>
   <w-app>
-    <Navbar />
+    <Navbar class="comp"/>
     <router-view v-slot="{ Component }">
       <transition
         mode="out-in"

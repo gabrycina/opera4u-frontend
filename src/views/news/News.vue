@@ -7,7 +7,7 @@
         <router-link
           :to="{ name: 'NewsArticle', params: { id: newsArticle.id } }"
         >
-          <div id="container">
+          <div class="container">
             <a class="card-link" href="#">
               <article class="blog-card">
                 <img
@@ -88,7 +88,7 @@ $shadow: rgba(0, 0, 0, 0.2);
   transition: $args;
 }
 
-#container {
+.container {
   width: 60vw;
   height: 13.625rem;
 }
@@ -121,7 +121,6 @@ $shadow: rgba(0, 0, 0, 0.2);
 
 .post-image {
   @include transition(opacity 0.3s ease);
-  display: block;
   width: 100%;
   object-fit: cover;
   object-position: center;
@@ -132,6 +131,12 @@ $shadow: rgba(0, 0, 0, 0.2);
 }
 
 .post-title {
+  display: -webkit-box;
+  max-width: inherit;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   @include transition(color 0.3s ease);
   font-size: 1.125rem;
   line-height: 1.4;
@@ -150,10 +155,10 @@ $shadow: rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 40rem) {
-  #container {
-    width: 18rem;
+  .container {
+    width: 90vw;
     height: 27.25rem;
-    margin-bottom: 2rem;
+    margin: 2rem;
   }
 
   .blog-card {
@@ -169,7 +174,7 @@ $shadow: rgba(0, 0, 0, 0.2);
     grid-template-areas: ". main main ." ". main main .";
   }
 
-  #container {
+  .container {
     grid-area: main;
     align-self: center;
     justify-self: center;
@@ -198,6 +203,10 @@ $shadow: rgba(0, 0, 0, 0.2);
 
     .post-description {
       font-size: 6vw;
+    }
+
+    .article-details {
+      width: 90vw;
     }
   }
 }

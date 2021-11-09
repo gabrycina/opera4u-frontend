@@ -6,7 +6,7 @@
           <div class="cardImage xs12" v-if="artist.avatar">
             <img :src="baseUrl + artist.avatar.url" />
           </div>
-          <p id="copy" class="pt2 pl2 text-left">Photo by @{{ artist.name }}</p>
+          <p id="copy" class="pt2 pl2 text-left">Photo by @{{ artist.avatarPhotoCopyright }}</p>
           <h3 class="gradientText pt4">Contact</h3>
           <router-link
             v-if="artist.agent"
@@ -62,7 +62,9 @@
               <font-awesome-icon class="black ml2" :icon="['fab', 'youtube']" />
             </a>
           </w-flex>
-          <p class="mt2 mb12 text">{{ artist.artistWebsite }}</p>
+          <p class="mt2 mb12 text">
+            <a :href="'//' + artist.artistWebsite" target="_blank">{{ artist.artistWebsite }}</a>
+          </p>
         </w-flex>
 
         <w-flex class="column xs12 md5 lg5">
@@ -106,21 +108,17 @@
                 IT
               </div>
             </w-flex>
-            <b>
-              <read-more
-                class="text"
-                more-str="Read More"
-                :text="bio"
-                link="#"
-                less-str="Read Less"
-                :max-chars="380"
-              ></read-more>
-            </b>
+            <read-more
+              class="text"
+              :text="bio"
+              less-str="read less"
+              :max-chars="380"
+            ></read-more>
           </div>
         </w-flex>
       </w-flex>
     </section>
-    <section class="container">
+    <section v-if="artist.gallery.length != 0" class="container">
       <h1 class="pt10 pb3 text-left ole" style="font-weight: 300;">
         <b>
           Gallery
@@ -133,7 +131,7 @@
         </div>
       </w-flex>
     </section>
-    <section class="container">
+    <section v-if="artist.news_articles.length != 0"  class="container">
       <h1 class="pt10 pb3 text-left ole" style="font-weight: 300;">
         <b> News on {{ artist.name }} </b>
       </h1>
@@ -169,7 +167,7 @@
         </vue-horizontal>
       </w-flex>
     </section>
-    <section class="container">
+    <section v-if="artist.presses.length != 0" class="container">
       <h1 class="pt10 pb3 text-left ole" style="font-weight: 300;">
         <b>
           Press
@@ -182,7 +180,7 @@
         </div>
       </w-flex>
     </section>
-    <section class="container">
+    <section v-if="artist.discographies.length != 0" class="container">
       <h1 class="pt10 pb3 text-left ole" style="font-weight: 300;">
         <b>
           Disography
@@ -216,6 +214,7 @@
 <script>
 import VueHorizontal from "vue-horizontal";
 import HorizontalCard from "../../components/HorizontalCard.vue";
+import ReadMore from "../../components/ReadMore.vue"
 const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 
 export default {
@@ -239,6 +238,7 @@ export default {
   components: {
     VueHorizontal,
     HorizontalCard,
+    ReadMore
   },
   methods: {
     onResize() {
@@ -382,6 +382,7 @@ h3 {
 .text {
   color: #868686;
   font-size: 1.4vw;
+  font-weight: 300;
   @supports (display: grid) {
     @media (max-width: 40rem) {
       font-size: 5vw;
@@ -482,6 +483,7 @@ a:-webkit-any-link {
   height: 1.5vw;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
   border-radius: 14px;
+  font-weight: 400;
 
   &__active {
     background: linear-gradient(180deg, #a6291e 0%, #640800 100%);
