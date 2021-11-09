@@ -63,7 +63,7 @@ max-width: 90vw;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; 
     font-weight: 400;
   }
 }
