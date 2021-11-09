@@ -8,7 +8,7 @@
         leave-active-class="animate__animated animate__fadeOut"
         :duration="{ enter: 100, leave: 100 }"
       >
-        <component :is="Component"></component>
+        <component class="comp" :is="Component"></component>
       </transition>
     </router-view>
     <Footer />
@@ -29,8 +29,10 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Lora;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.comp {
+  font-family: "Roboto";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

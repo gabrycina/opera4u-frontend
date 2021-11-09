@@ -142,6 +142,12 @@ $red: #770a00;
 $border: #ebebeb;
 $shadow: rgba(0, 0, 0, 0.2);
 
+.about {
+  h1 {
+    font-weight: 300;
+  }
+}
+
 #title {
   font-size: 5vw;
   padding-top: 3vw;

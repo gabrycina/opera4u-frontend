@@ -103,6 +103,10 @@ $shadow: rgba(0, 0, 0, 0.2);
     font-size: 1.8vw;
   }
 
+  h1 {
+    font-weight: 300;
+  }
+
   @media (max-width: 40rem) {
       margin-left: 10vw;
       margin-right: 10vw;

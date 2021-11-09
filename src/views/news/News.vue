@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>News</h1>
+    <h1 style="font-weight: 300;">News</h1>
     <input class="input" placeholder="Search by title" v-model="search" />
     <w-flex class="column pt10 align-center">
       <div :key="newsArticle.id" v-for="newsArticle in filteredNews">
