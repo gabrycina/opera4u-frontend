@@ -13,7 +13,7 @@ import { faFacebookSquare } from "@fortawesome/fontawesome-free-brands";
 import { faInstagram } from "@fortawesome/fontawesome-free-brands";
 import ReadMore from "vue-read-more";
 import VueCarousel from "@chenfengyuan/vue-carousel";
-
+import { marked } from "marked";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import VueSmoothScroll from "vue3-smooth-scroll";
 
@@ -35,6 +35,9 @@ app.mixin({
   methods: {
     isMobileHelper: function() {
       return this.windowWidth <= 760 ? true : false;
+    },
+    md: function(input) {
+      return marked(input);
     },
   },
 });

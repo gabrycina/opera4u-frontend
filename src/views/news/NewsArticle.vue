@@ -11,7 +11,7 @@
     </w-flex>
     <w-flex class="column justify-center align-center">
       <h1 class="mx10">{{ article.title }}</h1>
-      <p class="pt5 mx10">{{ article.body }}</p>
+      <p class="pt5 mx10" v-html="markdownToHtml"></p>
       <FeaturedArtists :artists="article.artists" />
     </w-flex>
   </div>
@@ -53,6 +53,11 @@ export default {
   async created() {
     await this.fetchArticle();
     this.loading = true;
+  },
+  computed: {
+    markdownToHtml() {
+      return this.md(this.article.body);
+    },
   },
 };
 </script>

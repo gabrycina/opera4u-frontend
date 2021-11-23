@@ -67,7 +67,12 @@
                 IT
               </div>
             </w-flex>
-            <read-more class="text" :text="bio" :max-chars="380"></read-more>
+            <read-more
+              v-html="markdownToHtml"
+              class="text"
+              :text="bio"
+              :max-chars="380"
+            ></read-more>
           </div>
         </w-flex>
       </w-flex>
@@ -150,6 +155,11 @@ export default {
   async created() {
     await this.fetchAgent();
     this.changeActiveBio("en");
+  },
+  computed: {
+    markdownToHtml() {
+      return this.md(this.bio);
+    },
   },
 };
 </script>

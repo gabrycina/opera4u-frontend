@@ -109,6 +109,7 @@
               </div>
             </w-flex>
             <read-more
+              v-html="markdownToHtml"
               class="text"
               :text="bio"
               less-str="read less"
@@ -215,6 +216,7 @@
 import VueHorizontal from "vue-horizontal";
 import HorizontalCard from "../../components/HorizontalCard.vue";
 import ReadMore from "../../components/ReadMore.vue"
+
 const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 
 export default {
@@ -292,6 +294,11 @@ export default {
     await this.fetchArtist();
     this.changeActiveBio("en");
   },
+  computed: {
+    markdownToHtml(){
+      return(this.md(this.bio))
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
