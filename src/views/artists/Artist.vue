@@ -395,6 +395,7 @@ h3 {
       font-size: 5vw;
     }
   }
+  text-align: justify
 }
 
 .carousel {

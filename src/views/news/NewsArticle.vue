@@ -11,7 +11,7 @@
     </w-flex>
     <w-flex class="column justify-center align-center">
       <h1 class="mx10">{{ article.title }}</h1>
-      <p class="pt5 mx10" v-html="markdownToHtml"></p>
+      <p class="pt5 mx10" style="text-align: justify" v-html="markdownToHtml"></p>
       <FeaturedArtists :artists="article.artists" />
     </w-flex>
   </div>

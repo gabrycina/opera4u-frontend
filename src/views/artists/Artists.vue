@@ -76,6 +76,14 @@ export default {
   methods: {
     //Grabs categories+artists from db and sets up
     //categories and selected arrays
+    compare(a,b) {
+      if (a.name < b.name)
+        return 1;
+      if (a.name > b.name)
+        return -1;
+      return 0;
+    },
+
     async fetchCategories() {
       const res = await fetch(`${baseAPI}/categories`, {
         method: "GET",
@@ -85,6 +93,10 @@ export default {
       }).then((response) => response.json());
 
       this.categories = res;
+      
+      for (let i = 0; i < this.categories.length; i++) {
+        this.categories[i].artists.sort(this.compare)
+      }
 
       console.log(this.categories);
     },
