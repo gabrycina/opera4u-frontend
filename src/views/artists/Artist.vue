@@ -6,7 +6,9 @@
           <div class="cardImage xs12" v-if="artist.avatar">
             <img :src="baseUrl + artist.avatar.url" />
           </div>
-          <p id="copy" class="pt2 pl2 text-left">Photo by @{{ artist.avatarPhotoCopyright }}</p>
+          <p id="copy" class="pt2 pl2 text-left">
+            Photo by @{{ artist.avatarPhotoCopyright }}
+          </p>
           <h3 class="gradientText pt4">Contact</h3>
           <router-link
             v-if="artist.agent"
@@ -33,38 +35,56 @@
           </router-link>
 
           <w-divider class="mr12"></w-divider>
-          <w-flex class="row mt2">
-            <a
-              v-if="artist.facebookLink"
-              style="color: inherit;"
-              :href="artist.facebookLink"
-              target="_blank"
+          <w-flex class="column">
+            <p class="mt2 text" style="font-size: 1rem">
+              <a
+                style="text-decoration: underline;"
+                :href="'//' + artist.artistWebsite"
+                target="_blank"
+                >{{ artist.artistWebsite }}</a
+              >
+            </p>
+            <w-flex
+              v-if="
+                artist.facebookLink ||
+                  artist.instagramLink ||
+                  artist.youtubeLink
+              "
+              class="row mt2"
             >
-              <font-awesome-icon class="black" :icon="['fab', 'facebook']" />
-            </a>
-            <a
-              v-if="artist.instagramLink"
-              style="color: inherit;"
-              :href="artist.instagramLink"
-              target="_blank"
-            >
-              <font-awesome-icon
-                class="black ml2"
-                :icon="['fab', 'instagram']"
-              />
-            </a>
-            <a
-              v-if="artist.youtubeLink"
-              style="color: inherit;"
-              :href="artist.youtubeLink"
-              target="_blank"
-            >
-              <font-awesome-icon class="black ml2" :icon="['fab', 'youtube']" />
-            </a>
+              <a
+                v-if="artist.facebookLink"
+                style="color: inherit;"
+                :href="artist.facebookLink"
+                target="_blank"
+              >
+                <font-awesome-icon class="black" :icon="['fab', 'facebook']" />
+              </a>
+              <a
+                v-if="artist.instagramLink"
+                style="color: inherit;"
+                :href="artist.instagramLink"
+                target="_blank"
+              >
+                <font-awesome-icon
+                  class="black ml2"
+                  :icon="['fab', 'instagram']"
+                />
+              </a>
+              <a
+                v-if="artist.youtubeLink"
+                style="color: inherit;"
+                :href="artist.youtubeLink"
+                target="_blank"
+              >
+                <font-awesome-icon
+                  class="black ml2"
+                  :icon="['fab', 'youtube']"
+                />
+              </a>
+            </w-flex>
+
           </w-flex>
-          <p class="mt2 mb12 text">
-            <a :href="'//' + artist.artistWebsite" target="_blank">{{ artist.artistWebsite }}</a>
-          </p>
         </w-flex>
 
         <w-flex class="column xs12 md5 lg5">
@@ -109,7 +129,6 @@
               </div>
             </w-flex>
             <read-more
-              v-html="markdownToHtml"
               class="text"
               :text="bio"
               less-str="read less"
@@ -130,42 +149,6 @@
         <div :key="reload">
           <vue-carousel :data="data" indicator-type="disc"></vue-carousel>
         </div>
-      </w-flex>
-    </section>
-    <section v-if="artist.news_articles.length != 0"  class="container">
-      <h1 class="pt10 pb3 text-left ole" style="font-weight: 300;">
-        <b> News on {{ artist.name }} </b>
-      </h1>
-      <w-divider></w-divider>
-      <w-flex class="column mt10">
-        <vue-horizontal responsive>
-          <section
-            class="lg6 md6 xs12"
-            v-for="news in artist.news_articles"
-            :key="news"
-          >
-            <router-link :to="{ name: 'NewsArticle', params: { id: news.id } }">
-              <HorizontalCard
-                :image="`${baseUrl + news.image.url}`"
-                :image-props="imageProps"
-                no-border
-              >
-                <w-flex class="pl5 row justify-start">
-                  <w-flex class="column">
-                    <h2 class="newsTitle text-left">
-                      {{ news.title }}
-                    </h2>
-                    <div class="xs8 text-left newsBody">
-                      <p>
-                        {{ news.body }}
-                      </p>
-                    </div>
-                  </w-flex>
-                </w-flex>
-              </HorizontalCard>
-            </router-link>
-          </section>
-        </vue-horizontal>
       </w-flex>
     </section>
     <section v-if="artist.presses.length != 0" class="container">
@@ -209,13 +192,15 @@
         </div>
       </w-flex>
     </section>
+    <section v-if="artist.news_articles.length != 0" class="container">
+      <FeaturedOnNews :artist="artist" />
+    </section>
   </w-flex>
 </template>
 
 <script>
-import VueHorizontal from "vue-horizontal";
-import HorizontalCard from "../../components/HorizontalCard.vue";
-import ReadMore from "../../components/ReadMore.vue"
+import FeaturedOnNews from "../../components/FeaturedOnNews/FeaturedOnNews.vue";
+import ReadMore from "../../components/ReadMore.vue";
 
 const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 
@@ -231,16 +216,12 @@ export default {
       data: [],
       press: [],
       reload: 0,
-      imageProps: {
-        ratio: 30 / 100,
-      },
       windowWidth: window.innerWidth,
     };
   },
   components: {
-    VueHorizontal,
-    HorizontalCard,
-    ReadMore
+    FeaturedOnNews,
+    ReadMore,
   },
   methods: {
     onResize() {
@@ -255,15 +236,12 @@ export default {
     },
 
     async fetchArtist() {
-      const res = await fetch(
-        `${baseAPI}/artists?id=` + this.id + "",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      ).then((response) => response.json());
+      const res = await fetch(`${baseAPI}/artists?id=` + this.id + "", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((response) => response.json());
 
       this.artist = res[0];
       this.bio = this.artist.bioEnglish;
@@ -281,8 +259,6 @@ export default {
       }
 
       this.reload++;
-      console.log(this.data);
-      console.log(this.artist);
     },
   },
   mounted() {
@@ -294,16 +270,15 @@ export default {
     await this.fetchArtist();
     this.changeActiveBio("en");
   },
-  computed: {
-    markdownToHtml(){
-      return(this.md(this.bio))
-    }
-  }
 };
 </script>
 <style lang="scss" scoped>
 $shadow: rgba(0, 0, 0, 0.2);
 $white: #fff;
+
+.content {
+  margin-top: auto;
+}
 
 .container {
   margin-left: 20vw;
@@ -395,7 +370,7 @@ h3 {
       font-size: 5vw;
     }
   }
-  text-align: justify
+  text-align: justify;
 }
 
 .carousel {

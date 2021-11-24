@@ -144,7 +144,6 @@ export default {
       }).then((response) => response.json());
 
       this.agent = res;
-      console.log(res);
     },
   },
   mounted() {

@@ -45,10 +45,11 @@
 
 				if(!this.isReadMore && this.text.length > this.maxChars){
 					val_container = val_container.substring(0,this.maxChars) + '...';
+					return(this.md(val_container))
 				}
 
-				return(val_container);
-			}
+				return(this.md(val_container));
+			},
 		},
 
 		methods: {

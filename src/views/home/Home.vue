@@ -224,7 +224,6 @@ export default {
       }).then((response) => response.json());
 
       this.heroImages = res.pop().images;
-      console.log(this.heroImages);
     },
 
     async fetchRecentNews() {
@@ -258,10 +257,6 @@ export default {
           i++;
         }
       }
-
-      //Debug print
-      console.log("Objets of (max 5) most recent news");
-      console.log(this.recentNews);
     },
 
     containsArtist(obj, list) {

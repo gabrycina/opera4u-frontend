@@ -59,7 +59,6 @@ export default {
       });
 
       this.news = res;
-      console.log(this.news);
     },
   },
   created() {

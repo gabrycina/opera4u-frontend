@@ -35,7 +35,7 @@
         />
 
         <Info
-          title="Impressum"
+          title="Imprint"
           info="Click here to read"
           link="http://opera4u.com"
         />
@@ -48,8 +48,18 @@
         <Info title="Telephone" info="T: +43 1 513 75 92" link="" />
       </w-flex>
     </div>
-    <w-flex class="row shrink pa10 justify-center">
+    <w-flex class="row shrink pt10 justify-center">
       <p>@ 2021 Copyright Opera4u.com</p>
+    </w-flex>
+
+    <w-flex class="row shrink py5 justify-center">
+      <a
+        style="color: inherit;"
+        href="https://www.facebook.com/Opera4u-167298469948371/"
+        target="_blank"
+      >
+        <font-awesome-icon class="black" :icon="['fab', 'facebook']" />
+      </a>
     </w-flex>
   </footer>
 </template>

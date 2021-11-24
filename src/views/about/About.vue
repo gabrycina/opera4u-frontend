@@ -73,7 +73,6 @@ export default {
       }).then((response) => response.json());
 
       this.team = res;
-      console.log(this.team);
     },
   },
   created() {

@@ -97,8 +97,6 @@ export default {
       for (let i = 0; i < this.categories.length; i++) {
         this.categories[i].artists.sort(this.compare)
       }
-
-      console.log(this.categories);
     },
 
     //Turns one and just one button on, turning all the others off
@@ -120,7 +118,6 @@ export default {
       }).then((response) => response.json());
 
       this.pdf = res;
-      console.log(this.pdf);
     },
   },
 
