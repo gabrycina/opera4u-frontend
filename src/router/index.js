@@ -55,6 +55,12 @@ const routes = [
     name: "PageNotFound",
     component: PageNotFound,
   },
+  {
+    path: "/imprint",
+    name: "Imprint",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Imprint.vue"),
+  },
 ];
 
 const router = createRouter({

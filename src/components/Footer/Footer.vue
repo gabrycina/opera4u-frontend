@@ -9,14 +9,19 @@
         <Info
           title="Address"
           info="Josefstädter Straße 30/2 A-1080 Vienna"
-          link=""
+          link="https://goo.gl/maps/eDX5hYUjXuZGqU3T6"
         />
 
-        <Info
-          title="Impressum"
-          info="Click here to read"
-          link="http://opera4u.com"
-        />
+        <router-link :to="{ name: 'Imprint' }">
+          <div>
+            <w-flex class="column pa5 no-shrink align-center">
+              <h4>Imprint</h4>
+              <p class="underlined">
+                Click to read
+              </p>
+            </w-flex>
+          </div>
+        </router-link>
 
         <Info
           title="Email for contacts"
@@ -31,14 +36,19 @@
         <Info
           title="Address"
           info="Josefstädter Straße 30/2 A-1080 Vienna"
-          link=""
+          link="https://goo.gl/maps/eDX5hYUjXuZGqU3T6"
         />
 
-        <Info
-          title="Imprint"
-          info="Click here to read"
-          link="http://opera4u.com"
-        />
+        <router-link :to="{ name: 'Imprint' }">
+          <div>
+            <w-flex class="column pa5 no-shrink align-center">
+              <h4>Imprint</h4>
+              <p class="underlined">
+                Click to read
+              </p>
+            </w-flex>
+          </div>
+        </router-link>
 
         <Info
           title="Email for contacts"
@@ -95,3 +105,32 @@ export default {
   },
 };
 </script>
+
+
+<style scoped>
+
+h4 {
+    background: linear-gradient(180deg, #A6291E 0%, #640800 100%);
+    font-size: 1.2vw;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.underlined {
+    text-decoration: underline;
+        color: #868686;
+    padding-top: .5em;
+    font-size: 1vw;
+}
+
+@media(max-width: 40rem){
+    h4 {
+        font-size: 5vw;
+    }
+
+    .underlined {
+      font-size: 3vw;
+    }
+}
+</style>
