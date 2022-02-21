@@ -95,11 +95,10 @@ export default {
       res.sort((a,b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0))
       
       for(var i = 0; i < res.length; i++){
-        res[i].artists.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+        res[i].artists.sort((a,b) => (a.name.split(' ')[1] > b.name.split(' ')[1]) ? 1 : ((b.name.split(' ')[1] > a.name.split(' ')[1]) ? -1 : 0))
       }
       
       this.categories = res.slice(0, 2).concat(res[res.length - 1]).concat(res.slice(2, 5)).concat(res[res.length - 2]).concat(res.slice(5, res.length - 2));    
-      console.log(res)
     },
 
     //Turns one and just one button on, turning all the others off
