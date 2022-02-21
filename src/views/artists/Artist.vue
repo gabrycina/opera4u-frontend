@@ -57,8 +57,9 @@
                 style="color: inherit;"
                 :href="artist.facebookLink"
                 target="_blank"
+                
               >
-                <font-awesome-icon class="black" :icon="['fab', 'facebook']" />
+                <font-awesome-icon class="black mb5" :icon="['fab', 'facebook']" size="lg"/>
               </a>
               <a
                 v-if="artist.instagramLink"
@@ -67,8 +68,9 @@
                 target="_blank"
               >
                 <font-awesome-icon
-                  class="black ml2"
+                  class="black ml5 mb5"
                   :icon="['fab', 'instagram']"
+                  size="lg"
                 />
               </a>
               <a
@@ -78,8 +80,9 @@
                 target="_blank"
               >
                 <font-awesome-icon
-                  class="black ml2"
+                  class="black ml5 mb5"
                   :icon="['fab', 'youtube']"
+                  size="lg"
                 />
               </a>
             </w-flex>
