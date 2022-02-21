@@ -257,9 +257,15 @@ export default {
 
       console.log(this.artist.discographies)
       for (var j = 0; j < this.artist.presses.length; j++) {
-        this.press.push(
-          `<w-flex class='column justify-center'><a href='${this.artist.presses[j].articleLink}' target='_blank'><i>${this.md(this.artist.presses[j].quoteFromReview)}</i></a><p class='pt3'><b>${this.artist.presses[j].author}</b></p></w-flex>`
-        );
+        console.log(this.artist.presses[j].articleLink)
+        if(this.artist.presses[j].articleLink != null)
+          this.press.push(
+            `<w-flex class='column justify-center'><a href='${this.artist.presses[j].articleLink}' target='_blank'><i>${this.md(this.artist.presses[j].quoteFromReview)}</i></a><p class='pt3'><b>${this.artist.presses[j].author}</b></p></w-flex>`
+          );
+        else 
+          this.press.push(
+            `<w-flex class='column justify-center'><i>${this.md(this.artist.presses[j].quoteFromReview)}</i><p class='pt3'><b>${this.artist.presses[j].author}</b></p></w-flex>`
+          );
       }
 
       this.reload++;
