@@ -211,7 +211,7 @@ $shadow: rgba(0, 0, 0, 0.2);
 }
 
 h1 {
-  font-size: 5vw;
+  font-size: 4vw;
   padding-top: 3vw;
   padding-bottom: 1vw;
   @media (max-width: 40rem) {

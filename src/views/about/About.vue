@@ -85,7 +85,7 @@ export default {
 $shadow: rgba(0, 0, 0, 0.2);
 
 #title {
-  font-size: 5vw;
+  font-size: 4vw;
   padding-top: 3vw;
   padding-bottom: 1vw;
   @media (max-width: 40rem) {
@@ -99,7 +99,7 @@ $shadow: rgba(0, 0, 0, 0.2);
 
   p {
     color: #868686;
-    font-size: 1.8vw;
+    font-size: 1.5vw;
   }
 
   h1 {
@@ -133,7 +133,7 @@ img {
 
 .name {
   background: linear-gradient(180deg, #a6291e 0%, #640800 100%);
-  font-size: 1.8vw;
+  font-size: 1.3vw;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

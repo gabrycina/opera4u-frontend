@@ -37,7 +37,16 @@ app.mixin({
       return this.windowWidth <= 760 ? true : false;
     },
     md: function(input) {
-      return marked(input);
+      input = input.replace(/\r\n|\r/g, '\n')
+                    .replace(/\t/g, '    ')
+                    .replace(/^[\w<][^\n]*\n+/mg,function(m){
+                      return /\n{2}/.test(m) ? m : m.replace(/\s+$/,"")+"  \n";
+                    });
+      
+      console.log(input);
+      var mark = marked.parse(input)
+      console.log(mark)
+      return mark;
     },
   },
 });

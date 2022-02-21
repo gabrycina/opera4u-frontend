@@ -60,6 +60,9 @@
 				if(this.lessStr !== null || this.lessStr !== '')
 					this.isReadMore = b;
 			}
+		},
+		created() {
+			console.log(this.text)
 		}
 	}
 </script>
@@ -69,5 +72,9 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+p {
+	margin-bottom: 1.2em;
 }
 </style>

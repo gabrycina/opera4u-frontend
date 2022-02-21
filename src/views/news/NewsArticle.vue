@@ -57,7 +57,7 @@ export default {
 
 <style lang="scss" scoped>
 .post-image {
-  width: 50vw;
+  width: 40vw;
   object-fit: cover;
   object-position: center;
   padding-bottom: 2rem;
@@ -69,7 +69,7 @@ export default {
 }
 
 h1 {
-  font-size: 2vw;
+  font-size: 2.3vw;
   max-width: 40vw;
   text-align: left;
   @supports(display: grid){
@@ -78,12 +78,13 @@ h1 {
       font-size: 7vw;
     }
   }
+  font-weight: 400;
 }
 
 p {
   color: #868686;
   max-width: 40vw;
-  font-size: 1vw;
+  font-size: 1.2vw;
   @supports (display: grid) {
     @media (max-width: 40rem) {
       max-width: 80vw;

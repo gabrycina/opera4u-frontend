@@ -167,7 +167,7 @@
     <section v-if="artist.discographies.length != 0" class="container">
       <h1 class="pt10 pb3 text-left ole" style="font-weight: 300;">
         <b>
-          Disography
+          Discography
         </b>
       </h1>
       <w-divider></w-divider>
@@ -254,7 +254,7 @@ export default {
 
       for (var j = 0; j < this.artist.presses.length; j++) {
         this.press.push(
-          `<w-flex class='column justify-center'><a style='color: inherit;' href='//${this.artist.presses[j].articleLink}' target='_blank'><i>${this.artist.presses[j].quoteFromReview}</i></a><p class='pt3'><b>${this.artist.presses[j].author}</b></p></w-flex>`
+          `<w-flex class='column justify-center'><a href='//${this.artist.presses[j].articleLink}' target='_blank'><i>${this.md(this.artist.presses[j].quoteFromReview)}</i></a><p class='pt3'><b>${this.artist.presses[j].author}</b></p></w-flex>`
         );
       }
 

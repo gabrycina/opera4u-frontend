@@ -28,7 +28,7 @@ export default {
 <style scoped>
 h4 {
     background: linear-gradient(180deg, #A6291E 0%, #640800 100%);
-    font-size: 1.2vw;
+    font-size: 1vw;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
