@@ -61,9 +61,6 @@
 					this.isReadMore = b;
 			}
 		},
-		created() {
-			console.log(this.text)
-		}
 	}
 </script>
 <style>

@@ -178,7 +178,7 @@
             v-for="disc in artist.discographies"
             :key="disc"
           >
-            <a>
+            <a :href="disc.diskLink" target="_blank">
               <w-flex class="column align-center">
                 <div class="cardImage xs12 text-center">
                   <img :src="baseUrl + disc.diskImage.url" />
@@ -252,9 +252,10 @@ export default {
         );
       }
 
+      console.log(this.artist.discographies)
       for (var j = 0; j < this.artist.presses.length; j++) {
         this.press.push(
-          `<w-flex class='column justify-center'><a href='//${this.artist.presses[j].articleLink}' target='_blank'><i>${this.md(this.artist.presses[j].quoteFromReview)}</i></a><p class='pt3'><b>${this.artist.presses[j].author}</b></p></w-flex>`
+          `<w-flex class='column justify-center'><a href='${this.artist.presses[j].articleLink}' target='_blank'><i>${this.md(this.artist.presses[j].quoteFromReview)}</i></a><p class='pt3'><b>${this.artist.presses[j].author}</b></p></w-flex>`
         );
       }
 

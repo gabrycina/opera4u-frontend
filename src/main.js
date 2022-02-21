@@ -43,9 +43,7 @@ app.mixin({
                       return /\n{2}/.test(m) ? m : m.replace(/\s+$/,"")+"  \n";
                     });
       
-      console.log(input);
       var mark = marked.parse(input)
-      console.log(mark)
       return mark;
     },
   },
