@@ -10,80 +10,38 @@
             Photo by @{{ artist.avatarPhotoCopyright }}
           </p>
           <h3 class="gradientText pt4">Contact</h3>
-          <router-link
-            v-if="artist.agent"
-            :to="{ name: 'Agent', params: { id: artist.agent[0].id } }"
-          >
-            <w-flex
-              class="row contactContainer mt2 mb4 justify-space-evenly align-center"
-            >
+          <router-link v-if="artist.agent" :to="{ name: 'Agent', params: { id: artist.agent[0].id } }">
+            <w-flex class="row contactContainer mt2 mb4 justify-space-evenly align-center">
               <div class="contact ml2" v-if="artist.agent[0].avatar">
-                <img
-                  style="object-fit:cover;"
-                  :src="baseUrl + artist.agent[0].avatar.url"
-                />
+                <img style="object-fit:cover;" :src="baseUrl + artist.agent[0].avatar.url" />
               </div>
               <h1 id="contactText" class="ml2">
                 {{ artist.agent[0].name }}
               </h1>
-              <font-awesome-icon
-                class="black mr3 ml3"
-                icon="chevron-down"
-                rotation="270"
-              />
+              <font-awesome-icon class="black mr3 ml3" icon="chevron-down" rotation="270" />
             </w-flex>
           </router-link>
 
           <w-divider class="mr12"></w-divider>
           <w-flex class="column">
             <p class="mt2 text" style="font-size: 1rem">
-              <a
-                style="text-decoration: underline;"
-                :href="'//' + artist.artistWebsite"
-                target="_blank"
-                >{{ artist.artistWebsite }}</a
-              >
+              <a style="text-decoration: underline;" :href="'//' + artist.artistWebsite" target="_blank">{{
+                  artist.artistWebsite
+              }}</a>
             </p>
-            <w-flex
-              v-if="
-                artist.facebookLink ||
-                  artist.instagramLink ||
-                  artist.youtubeLink
-              "
-              class="row mt2"
-            >
-              <a
-                v-if="artist.facebookLink"
-                style="color: inherit;"
-                :href="artist.facebookLink"
-                target="_blank"
-                
-              >
-                <font-awesome-icon class="black mb5" :icon="['fab', 'facebook']" size="lg"/>
+            <w-flex v-if="
+              artist.facebookLink ||
+              artist.instagramLink ||
+              artist.youtubeLink
+            " class="row mt2">
+              <a v-if="artist.facebookLink" style="color: inherit;" :href="artist.facebookLink" target="_blank">
+                <font-awesome-icon class="black mb5" :icon="['fab', 'facebook']" size="lg" />
               </a>
-              <a
-                v-if="artist.instagramLink"
-                style="color: inherit;"
-                :href="artist.instagramLink"
-                target="_blank"
-              >
-                <font-awesome-icon
-                  class="black ml5 mb5"
-                  :icon="['fab', 'instagram']"
-                  size="lg"
-                />
+              <a v-if="artist.instagramLink" style="color: inherit;" :href="artist.instagramLink" target="_blank">
+                <font-awesome-icon class="black ml5 mb5" :icon="['fab', 'instagram']" size="lg" />
               </a>
-              <a
-                v-if="artist.youtubeLink"
-                style="color: inherit;"
-                :href="artist.youtubeLink"
-                target="_blank"
-              >
-                <font-awesome-icon
-                  class="black ml5 mb5"
-                  :icon="['fab', 'youtube']"
-                  size="lg"
-                />
+              <a v-if="artist.youtubeLink" style="color: inherit;" :href="artist.youtubeLink" target="_blank">
+                <font-awesome-icon class="black ml5 mb5" :icon="['fab', 'youtube']" size="lg" />
               </a>
             </w-flex>
 
@@ -100,43 +58,23 @@
             </h2>
             <w-divider class="my3"></w-divider>
             <w-flex class="row justify-start mb3">
-              <div
-                v-if="artist.bioEnglish"
-                class="button"
-                :class="[
-                  bioSelected == 'en' ? 'button__active' : 'button__inactive',
-                ]"
-                @click="changeActiveBio('en')"
-              >
+              <div v-if="artist.bioEnglish" class="button" :class="[
+                bioSelected == 'en' ? 'button__active' : 'button__inactive',
+              ]" @click="changeActiveBio('en')">
                 EN
               </div>
-              <div
-                v-if="artist.bioGerman"
-                class="button ml3"
-                :class="[
-                  bioSelected == 'de' ? 'button__active' : 'button__inactive',
-                ]"
-                @click="changeActiveBio('de')"
-              >
+              <div v-if="artist.bioGerman" class="button ml3" :class="[
+                bioSelected == 'de' ? 'button__active' : 'button__inactive',
+              ]" @click="changeActiveBio('de')">
                 DE
               </div>
-              <div
-                v-if="artist.bioItalian"
-                class="button ml3"
-                :class="[
-                  bioSelected == 'it' ? 'button__active' : 'button__inactive',
-                ]"
-                @click="changeActiveBio('it')"
-              >
+              <div v-if="artist.bioItalian" class="button ml3" :class="[
+                bioSelected == 'it' ? 'button__active' : 'button__inactive',
+              ]" @click="changeActiveBio('it')">
                 IT
               </div>
             </w-flex>
-            <read-more
-              class="text"
-              :text="bio"
-              less-str="read less"
-              :max-chars="380"
-            ></read-more>
+            <read-more class="text" :text="bio" less-str="read less" :max-chars="380"></read-more>
           </div>
         </w-flex>
       </w-flex>
@@ -174,13 +112,9 @@
         </b>
       </h1>
       <w-divider></w-divider>
-      <w-flex class="column mt10">
-        <div v-if="artist.discographies">
-          <section
-            class="lg3 md3 xs12 px5"
-            v-for="disc in artist.discographies"
-            :key="disc"
-          >
+      <div v-if="artist.discographies">
+        <vue-horizontal class="horizontal" :displacement="0.5">
+          <div class="lg3 md6 xs12 py5 mr8 disk" v-for="disc in artist.discographies" :key="disc">
             <a :href="disc.diskLink" target="_blank">
               <w-flex class="column align-center">
                 <div class="cardImage xs12 text-center">
@@ -191,9 +125,9 @@
                 </div>
               </w-flex>
             </a>
-          </section>
-        </div>
-      </w-flex>
+          </div>
+        </vue-horizontal>
+      </div>
     </section>
     <section v-if="artist.news_articles.length != 0" class="container">
       <FeaturedOnNews :artist="artist" />
@@ -258,11 +192,11 @@ export default {
       console.log(this.artist.discographies)
       for (var j = 0; j < this.artist.presses.length; j++) {
         console.log(this.artist.presses[j].articleLink)
-        if(this.artist.presses[j].articleLink != null)
+        if (this.artist.presses[j].articleLink != null)
           this.press.push(
             `<w-flex class='column justify-center'><a href='${this.artist.presses[j].articleLink}' target='_blank'><i>${this.md(this.artist.presses[j].quoteFromReview)}</i></a><p class='pt3'><b>${this.artist.presses[j].author}</b></p></w-flex>`
           );
-        else 
+        else
           this.press.push(
             `<w-flex class='column justify-center'><i>${this.md(this.artist.presses[j].quoteFromReview)}</i><p class='pt3'><b>${this.artist.presses[j].author}</b></p></w-flex>`
           );
@@ -294,6 +228,7 @@ $white: #fff;
   margin-left: 20vw;
   margin-right: 20vw;
   margin-top: 3vw;
+
   @supports (display: grid) {
     @media (max-width: 40rem) {
       margin-left: 10vw;
@@ -347,6 +282,7 @@ $white: #fff;
 #copy {
   color: #868686;
   font-size: 0.8vw;
+
   @supports (display: grid) {
     @media (max-width: 40rem) {
       font-size: 3.8vw;
@@ -356,6 +292,7 @@ $white: #fff;
 
 #contactText {
   font-size: 0.9vw;
+
   @supports (display: grid) {
     @media (max-width: 40rem) {
       font-size: 3.8vw;
@@ -375,17 +312,20 @@ h3 {
   color: #868686;
   font-size: 1.4vw;
   font-weight: 300;
+
   @supports (display: grid) {
     @media (max-width: 40rem) {
       font-size: 5vw;
     }
   }
+
   text-align: justify;
 }
 
 .carousel {
   margin-left: 15vw;
   margin-right: 15vw;
+
   @supports (display: grid) {
     @media (max-width: 40rem) {
       margin-left: 5vw;
@@ -400,6 +340,7 @@ h3 {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
   @supports (display: grid) {
     @media (max-width: 40rem) {
       font-size: 5vw;
@@ -431,6 +372,7 @@ a:-webkit-any-link {
 
 .newsTitle {
   font-size: 1.5vw;
+
   @supports (display: grid) {
     @media (max-width: 40rem) {
       font-size: 5vw;
@@ -449,6 +391,7 @@ a:-webkit-any-link {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+
     @supports (display: grid) {
       @media (max-width: 40rem) {
         font-size: 4vw;
@@ -467,6 +410,10 @@ a:-webkit-any-link {
       font-size: 2.5vw;
     }
   }
+}
+
+.disk {
+  display: inline-block;
 }
 
 .button {

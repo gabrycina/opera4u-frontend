@@ -5,11 +5,7 @@
     <div>
       <select v-model="selected" class="py3 pl8 input">
         <option value="">Pick a Category</option>
-        <option
-          v-for="category in categories"
-          :value="category.displayName"
-          :key="category.id"
-        >
+        <option v-for="category in categories" :value="category.displayName" :key="category.id">
           {{ category.displayName }}
         </option>
       </select>
@@ -19,35 +15,28 @@
     <!-- <DownloadButton text="Download All Artists" :proxy="pdf"/> -->
 
     <div :key="category.id" v-for="category in filteredCategories">
-      <div class="divider">
-        <h1 class="pt10 pb3 text-left ole" style="font-weight: 300; word-wrap: break-word;">
-          {{ category.displayName }}
-        </h1>
-        <w-divider></w-divider>
-        <w-flex class="row wrap">
-          <section v-if="category.artists.length == 0" class="text-center xs12 px5">
-            <h1 class="pa12" style="color: #868686; font-weight: 300; opacity: .5">
-              No Artists in this Category
-            </h1>
-          </section>
-          <section
-            class="lg3 md3 xs12 py5 px5"
-            v-for="artist in category.artists"
-            :key="artist.id"
-          >
-            <router-link :to="{ name: 'Artist', params: { id: artist.id } }">
-              <w-flex class="column align-center">
-                <div class="cardImage xs12">
-                  <img :src="baseUrl + artist.avatar.url" />
-                </div>
-                <p class="title2 pt4">
-                  <b>{{ artist.name }}</b>
-                </p>
-              </w-flex>
-            </router-link>
-          </section>
-        </w-flex>
-      </div>
+      <section v-if="category.artists.length > 0" class="text-center xs12 px5">
+        <div class="divider">
+          <h1 class="pt10 pb3 text-left ole" style="font-weight: 300; word-wrap: break-word;">
+            {{ category.displayName }}
+          </h1>
+          <w-divider></w-divider>
+          <w-flex class="row wrap">
+            <section class="lg3 md3 xs12 py5 px5" v-for="artist in category.artists" :key="artist.id">
+              <router-link :to="{ name: 'Artist', params: { id: artist.id } }">
+                <w-flex class="column align-center">
+                  <div class="cardImage xs12">
+                    <img :src="baseUrl + artist.avatar.url" />
+                  </div>
+                  <p class="title2 pt4">
+                    <b>{{ artist.name }}</b>
+                  </p>
+                </w-flex>
+              </router-link>
+            </section>
+          </w-flex>
+        </div>
+      </section>
     </div>
   </div>
 </template>
@@ -76,7 +65,7 @@ export default {
   methods: {
     //Grabs categories+artists from db and sets up
     //categories and selected arrays
-    compare(a,b) {
+    compare(a, b) {
       if (a.name < b.name)
         return 1;
       if (a.name > b.name)
@@ -92,13 +81,13 @@ export default {
         },
       }).then((response) => response.json());
 
-      res.sort((a,b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0))
-      
-      for(var i = 0; i < res.length; i++){
-        res[i].artists.sort((a,b) => (a.name.split(' ')[1] > b.name.split(' ')[1]) ? 1 : ((b.name.split(' ')[1] > a.name.split(' ')[1]) ? -1 : 0))
+      res.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0))
+
+      for (var i = 0; i < res.length; i++) {
+        res[i].artists.sort((a, b) => (a.name.split(' ')[1] > b.name.split(' ')[1]) ? 1 : ((b.name.split(' ')[1] > a.name.split(' ')[1]) ? -1 : 0))
       }
-      
-      this.categories = res.slice(0, 2).concat(res[res.length - 1]).concat(res.slice(2, 5)).concat(res[res.length - 2]).concat(res.slice(5, res.length - 2));    
+
+      this.categories = res.slice(0, 2).concat(res[res.length - 1]).concat(res.slice(2, 5)).concat(res[res.length - 2]).concat(res.slice(5, res.length - 2));
     },
 
     //Turns one and just one button on, turning all the others off
@@ -132,7 +121,7 @@ export default {
   computed: {
     //computed array with all the selected categories inside
     //all case: no filter applied
-    filteredCategories: function() {
+    filteredCategories: function () {
       if (this.selected == "") return this.categories;
       else {
         return this.categories.filter((category) => {
@@ -163,6 +152,7 @@ $shadow: rgba(0, 0, 0, 0.2);
   font-size: 4vw;
   padding-top: 3vw;
   padding-bottom: 1vw;
+
   @media (max-width: 40rem) {
     font-size: 15vw;
   }

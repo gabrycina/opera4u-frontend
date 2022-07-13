@@ -82,19 +82,18 @@
         Managed Artists
       </h1>
       <w-divider></w-divider>
-      <div class="managedArtists">
+      <div>
         <w-flex
-          style="max-height: 20rem"
-          class="column wrap mt4 justify-start align-start"
+          class="row wrap mt4 justify-start align-start managedArtists"
         >
-          <div v-for="artist in agent.artists" :key="artist">
+          <div class="lg3 md3 mr3" v-for="artist in agent.artists" :key="artist">
             <div v-if="artist.avatar && artist.bioEnglish">
               <router-link :to="{ name: 'Artist', params: { id: artist.id } }">
-                <h1 class="my1 active">{{ artist.name }}</h1>
+                <h1 class="my1 active text-left">{{ artist.name }}</h1>
               </router-link>
             </div>
             <div v-else>
-              <h1 class="my1 inactive">{{ artist.name }}</h1>
+              <h1 class="my1 inactive text-left">{{ artist.name }}</h1>
             </div>
           </div>
         </w-flex>
@@ -375,7 +374,7 @@ a:-webkit-any-link {
 
 .active {
   background: linear-gradient(180deg, #a6291e 0%, #640800 100%);
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -388,7 +387,7 @@ a:-webkit-any-link {
 
 .inactive {
   color: #868686;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   @supports (display: grid) {
     @media (max-width: 40rem) {
       font-size: 5vw;
