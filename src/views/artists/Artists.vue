@@ -87,7 +87,7 @@ export default {
         res[i].artists.sort((a, b) => (a.name.split(' ')[1] > b.name.split(' ')[1]) ? 1 : ((b.name.split(' ')[1] > a.name.split(' ')[1]) ? -1 : 0))
       }
 
-      this.categories = res.slice(0, 2).concat(res[res.length - 1]).concat(res.slice(2, 5)).concat(res[res.length - 2]).concat(res.slice(5, res.length - 2));
+      this.categories = res
     },
 
     //Turns one and just one button on, turning all the others off

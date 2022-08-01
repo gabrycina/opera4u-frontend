@@ -142,6 +142,10 @@ export default {
         },
       }).then((response) => response.json());
 
+      console.log(res)
+
+      res.artists.sort((a, b) => (a.name.split(' ')[1] > b.name.split(' ')[1]) ? 1 : ((b.name.split(' ')[1] > a.name.split(' ')[1]) ? -1 : 0))
+      
       this.agent = res;
     },
   },

@@ -71,8 +71,9 @@ export default {
           "Content-Type": "application/json",
         },
       }).then((response) => response.json());
-
-      this.team = res;
+        
+      this.team = [].concat(res[3]).concat(res[1]).concat(res[res.length - 2]).concat(res[0]);
+      console.log(this.team)
     },
   },
   created() {
