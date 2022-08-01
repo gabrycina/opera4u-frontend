@@ -69,13 +69,13 @@ export default {
 }
 
 h1 {
-  font-size: 2.3vw;
+  font-size: 1.5rem;
   max-width: 40vw;
   text-align: left;
   @supports(display: grid){
     @media(max-width: 40rem){
       max-width: 80vw;
-      font-size: 7vw;
+      font-size: 6vw;
     }
   }
   font-weight: 400;
@@ -88,7 +88,8 @@ p {
   @supports (display: grid) {
     @media (max-width: 40rem) {
       max-width: 80vw;
-      font-size: 5vw;
+      font-size: 4vw;
+      line-height: 1.5rem;
       text-align: left;
     }
   }

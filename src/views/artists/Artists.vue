@@ -28,7 +28,7 @@
                   <div class="cardImage xs12">
                     <img :src="baseUrl + artist.avatar.url" />
                   </div>
-                  <p class="title2 pt4">
+                  <p class="title3 pt4">
                     <b>{{ artist.name }}</b>
                   </p>
                 </w-flex>
@@ -149,12 +149,12 @@ $shadow: rgba(0, 0, 0, 0.2);
 }
 
 #title {
-  font-size: 4vw;
+  font-size: 3vw;
   padding-top: 3vw;
   padding-bottom: 1vw;
 
   @media (max-width: 40rem) {
-    font-size: 15vw;
+    font-size: 10vw;
   }
 }
 
@@ -194,8 +194,8 @@ h2 {
 }
 
 .cardImage {
-  height: 14em;
-  max-width: 14em;
+  height: 12em;
+  max-width: 12em;
   border-radius: 2em;
   box-shadow: 0 0.1875rem 0.8rem $shadow;
   text-align: center;

@@ -73,5 +73,7 @@
 
 p {
 	margin-bottom: 1.2em;
+	font-size: 1rem;
+	line-height: 1.6rem;
 }
 </style>

@@ -50,7 +50,7 @@
 
         <w-flex class="column xs12 md5 lg5">
           <div v-if="artist.category" class="text-left title1">
-            <h1>
+            <h1 id="artistName">
               {{ artist.name }}
             </h1>
             <h2 class="text">
@@ -74,7 +74,7 @@
                 IT
               </div>
             </w-flex>
-            <read-more class="text" :text="bio" less-str="read less" :max-chars="380"></read-more>
+            <read-more class="text" :text="bio" less-str="read less" :max-chars="500"></read-more>
           </div>
         </w-flex>
       </w-flex>
@@ -114,7 +114,7 @@
       <w-divider></w-divider>
       <div v-if="artist.discographies">
         <vue-horizontal class="horizontal" :displacement="0.5">
-          <div class="lg3 md6 xs12 py5 mr8 disk" v-for="disc in artist.discographies" :key="disc">
+          <div class="lg3 md6 xs12 py5 mr8 mb10 disk" v-for="disc in artist.discographies" :key="disc">
             <a :href="disc.diskLink" target="_blank">
               <w-flex class="column align-center">
                 <div class="cardImage xs12 text-center">
@@ -189,7 +189,6 @@ export default {
         );
       }
 
-      console.log(this.artist.discographies)
       for (var j = 0; j < this.artist.presses.length; j++) {
         console.log(this.artist.presses[j].articleLink)
         if (this.artist.presses[j].articleLink != null)
@@ -239,8 +238,8 @@ $white: #fff;
 }
 
 .cardImage {
-  height: 13em;
-  width: 13em;
+  height: 12em;
+  width: 12em;
   border-radius: 2em;
   box-shadow: 0 0.1875rem 0.8rem $shadow;
   text-align: center;
@@ -275,7 +274,16 @@ $white: #fff;
   text-align: center;
 
   h1 {
-    font-size: 1.2vw;
+    font-size: 1vw;
+  }
+}
+
+#artistName {
+    font-size: 2rem;
+    @supports (display: grid) {
+      @media (max-width: 40rem) {
+        margin-top: 3rem
+      }
   }
 }
 

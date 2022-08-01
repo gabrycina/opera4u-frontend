@@ -42,7 +42,7 @@ export default {
 }
 
 .newsTitle {
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   font-weight: 400;
   margin-bottom: 0.2em;
 }

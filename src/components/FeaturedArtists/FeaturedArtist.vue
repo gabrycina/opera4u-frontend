@@ -47,7 +47,7 @@ export default {
 }
 
 .artistName {
-  font-size: 2vw;
+  font-size: 1.2vw;
   white-space: nowrap;
   font-weight: 400;
   margin-bottom: .2em;
@@ -65,6 +65,7 @@ max-width: 90vw;
     overflow: hidden;
     text-overflow: ellipsis; 
     font-weight: 400;
+    font-size: .8rem;
   }
 }
 

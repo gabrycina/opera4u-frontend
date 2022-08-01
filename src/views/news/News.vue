@@ -137,7 +137,7 @@ $shadow: rgba(0, 0, 0, 0.2);
   overflow: hidden;
   text-overflow: ellipsis;
   @include transition(color 0.3s ease);
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   line-height: 1.4;
   color: $black;
   font-weight: 700;
@@ -151,12 +151,13 @@ $shadow: rgba(0, 0, 0, 0.2);
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: .8rem;
 }
 
 @media (max-width: 40rem) {
   .container {
     width: 90vw;
-    height: 27.25rem;
+    height: 31rem;
     margin: 2rem;
   }
 
@@ -201,21 +202,21 @@ $shadow: rgba(0, 0, 0, 0.2);
     }
 
     .post-description {
-      font-size: 6vw;
+      font-size: 4vw;
     }
 
     .article-details {
-      width: 90vw;
+      width: 85vw;
     }
   }
 }
 
 h1 {
-  font-size: 4vw;
+  font-size: 3vw;
   padding-top: 3vw;
   padding-bottom: 1vw;
   @media (max-width: 40rem) {
-    font-size: 15vw;
+    font-size: 10vw;
   }
 }
 

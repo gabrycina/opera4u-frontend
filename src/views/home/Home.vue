@@ -327,12 +327,12 @@ export default {
 
   h1 {
     font-weight: 300;
-    font-size: 5vw;
+    font-size: 3rem;
   }
 
   h2 {
     font-weight: 300;
-    font-size: 2vw;
+    font-size: 2.5rem;
   }
 }
 
@@ -349,12 +349,12 @@ export default {
 
   p {
     color: #868686;
-    font-size: 1vw;
+    font-size: 1.5rem !important
   }
 
   h1 {
     text-align: right;
-    font-size: 3vw;
+    font-size: 2rem;
     font-weight: 300;
   }
 }
@@ -414,13 +414,13 @@ export default {
 
     .aboutText {
       p {
-        font-size: 6vw !important;
+        font-size: 4vw !important;
         text-align: left;
       }
 
       h1 {
         text-align: left;
-        font-size: 10vw;
+        font-size: 8vw;
       }
     }
 

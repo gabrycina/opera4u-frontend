@@ -64,12 +64,13 @@ export default {
   justify-content: space-between;
 
   h1 {
+    font-size: 1rem;
     margin-bottom: 1rem;
   }
 
   p {
     color: #868686;
-    font-size: 1.3vw;
+    font-size: 1vw;
     font-weight: 300;
     display: -webkit-box;
     max-width: inherit;
@@ -86,7 +87,7 @@ export default {
 
 #artist {
   background: linear-gradient(180deg, #a6291e 0%, #640800 100%);
-  transform: translate(0px, 3px);
+  transform: translate(0px, -3px);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -102,12 +103,17 @@ export default {
   @media (max-width: 40rem) {
     .content {
       p {
-        font-size: 4vw;
+        font-size: 3vw;
+      }
+
+      h1 {
+        font-size: 1.2rem
       }
     }
 
     #artist {
       font-size: 4vw;
+      transform: translate(0px, -3px);
     }
   }
 }

@@ -28,7 +28,7 @@
 
         <w-flex class="column xs12 md5 lg5">
           <div v-if="agent" class="text-left title1">
-            <h1>
+            <h1 id="agentName">
               {{ agent.name }}
             </h1>
             <h2 class="text">
@@ -183,8 +183,8 @@ $white: #fff;
 }
 
 .cardImage {
-  height: 13em;
-  width: 13em;
+  height: 12em;
+  width: 12em;
   border-radius: 2em;
   box-shadow: 0 0.1875rem 0.8rem $shadow;
   text-align: center;
@@ -260,6 +260,15 @@ h3 {
     }
   }
   text-align: justify
+}
+
+#agentName {
+    font-size: 2rem;
+    @supports (display: grid) {
+      @media (max-width: 40rem) {
+        margin-top: 3rem
+      }
+  }
 }
 
 .carousel {

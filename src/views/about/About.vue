@@ -86,11 +86,12 @@ export default {
 $shadow: rgba(0, 0, 0, 0.2);
 
 #title {
-  font-size: 4vw;
+  font-size: 2.5rem;
   padding-top: 3vw;
   padding-bottom: 1vw;
   @media (max-width: 40rem) {
-    font-size: 12vw;
+    padding-top: 10vw;
+    font-size: 2.5rem;
   }
 }
 
@@ -100,7 +101,7 @@ $shadow: rgba(0, 0, 0, 0.2);
 
   p {
     color: #868686;
-    font-size: 1.5vw;
+    font-size: 1.2rem;
   }
 
   h1 {
@@ -110,16 +111,17 @@ $shadow: rgba(0, 0, 0, 0.2);
   @media (max-width: 40rem) {
       margin-left: 10vw;
       margin-right: 10vw;
+      margin-bottom: 10vw;
 
       p {
-        font-size: 6vw;
+        font-size: 1.2rem
       }
   }
 }
 
 .cardImage {
-  height: 14em;
-  max-width: 14em;
+  height: 12em;
+  max-width: 12em;
   border-radius: 2em;
   box-shadow: 0 0.1875rem 0.8rem $shadow;
   text-align: center;
@@ -134,12 +136,12 @@ img {
 
 .name {
   background: linear-gradient(180deg, #a6291e 0%, #640800 100%);
-  font-size: 1.3vw;
+  font-size: 1.2rem;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   @media (max-width: 40rem) {
-    font-size: 8vw;
+    font-size: 5vw;
   }
 }
 </style>
