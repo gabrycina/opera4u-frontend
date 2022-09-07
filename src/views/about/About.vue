@@ -3,14 +3,16 @@
     <w-flex class="row justify-center xs12">
       <div class="container">
         <h1 id="title">Our Agency</h1>
-        <p class="headline my5">
-          Opera4u has <b>years</b> of professional experience and industry
-          knowledge as an opera and concert agency.
+        <p class="headline mb5" style="font-weight: 500">
+          Opera4u has <span style="color: #770a00"><b>years</b></span> of
+          professional experience and industry knowledge as an opera and concert
+          agency.
         </p>
-        <p class="headline mb5">
-          It offers <b>well-known</b> opera singers, conductors and directors.
+        <p class="headline mb5" style="font-weight: 500">
+          It offers <span style="color: #770a00"><b>well-known</b></span> opera
+          singers, conductors and directors.
         </p>
-        <p class="headline">
+        <p class="headline" style="font-weight: 500">
           The promotion of young talents to the stars of tomorrow is
           <span style="color: #770a00"><b>our passion.</b></span>
         </p>
@@ -18,15 +20,13 @@
     </w-flex>
 
     <div class="divider">
-      <h1 class="pt10 pb3 text-left ole" style="font-weight: 300;">
-        Our Team
-      </h1>
+      <h1 class="pt10 pb3 text-left ole" style="font-weight: 300">Our Team</h1>
       <w-divider></w-divider>
       <w-flex class="row wrap">
         <section v-if="team.length == 0" class="text-center xs12 px5">
           <h1
             class="pa12"
-            style="color: #666666; font-weight: 300; opacity: .5"
+            style="color: #666666; font-weight: 300; opacity: 0.5"
           >
             No Team Members Added Yet
           </h1>
@@ -53,7 +53,7 @@
 </template>
 
 <script>
- const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
+const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 export default {
   title: "Opera4u - About Us",
   name: "About",
@@ -71,9 +71,13 @@ export default {
           "Content-Type": "application/json",
         },
       }).then((response) => response.json());
-        
-      this.team = [].concat(res[3]).concat(res[1]).concat(res[res.length - 2]).concat(res[0]);
-      console.log(this.team)
+
+      this.team = []
+        .concat(res[3])
+        .concat(res[1])
+        .concat(res[res.length - 2])
+        .concat(res[0]);
+      console.log(this.team);
     },
   },
   created() {
@@ -95,6 +99,10 @@ $shadow: rgba(0, 0, 0, 0.2);
   }
 }
 
+.headline {
+  font-weight: 500;
+}
+
 .container {
   margin-left: 35vw;
   margin-right: 35vw;
@@ -105,17 +113,19 @@ $shadow: rgba(0, 0, 0, 0.2);
   }
 
   h1 {
-    font-weight: 300;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
   }
 
   @media (max-width: 40rem) {
-      margin-left: 10vw;
-      margin-right: 10vw;
-      margin-bottom: 10vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-bottom: 10vw;
 
-      p {
-        font-size: 1.2rem
-      }
+    p {
+      font-size: 1.2rem;
+    }
   }
 }
 

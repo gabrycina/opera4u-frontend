@@ -19,7 +19,7 @@
                   </svg>
                   <div class="name">{{  news.title.length > 20 ? news.title.substring(0, 20)+"..." : news.title }}</div>
                 </div>
-                <div class="title">{{ news.body.substring(0, 40)+"..." }}</div>
+                <div class="title">{{ news.body.substring(0, 50)+"..." }}</div>
               </div>
             </div>
           </div>
@@ -99,17 +99,18 @@ export default {
 }
 
 .title {
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 500;
   line-height: 1.6;
   margin-top: 8px;
   margin-bottom: 8px;
   text-align: left;
+  color: #666666;
 }
 
 .date {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 300;
   line-height: 1.5;
 }
 </style>

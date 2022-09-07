@@ -71,7 +71,7 @@ export default {
   p {
     color: #666666;
     font-size: 1vw;
-    font-weight: 300;
+    font-weight: 500;
     display: -webkit-box;
     max-width: inherit;
     -webkit-line-clamp: 3;

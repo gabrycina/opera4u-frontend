@@ -78,13 +78,14 @@ h1 {
       font-size: 6vw;
     }
   }
-  font-weight: 400;
+  font-weight: 500;
 }
 
 p {
   color: #666666;
   max-width: 40vw;
   font-size: 1.2vw;
+  font-weight: 500;
   @supports (display: grid) {
     @media (max-width: 40rem) {
       max-width: 80vw;

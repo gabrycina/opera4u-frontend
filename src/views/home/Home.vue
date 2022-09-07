@@ -87,15 +87,15 @@
             <div style="width: 100%;" class="text-left">
               <h1>Our Agency</h1>
             </div>
-            <p class="headline my5">
-              Opera4u has <b>years</b> of professional experience and industry
+            <p class="headline my5" style="font-weight: 500">
+              Opera4u has <span style="color: #770a00"><b>years</b></span> of professional experience and industry
               knowledge as an opera and concert agency.
             </p>
-            <p class="headline mb5">
-              It offers <b>well-known</b> opera singers, conductors and
+            <p class="headline mb5" style="font-weight: 500">
+              It offers <span style="color: #770a00"><b>well-known</b></span> opera singers, conductors and
               directors.
             </p>
-            <p class="headline">
+            <p class="headline" style="font-weight: 500">
               The promotion of young talents to the stars of tomorrow is
               <span style="color: #770a00"><b>our passion.</b></span>
             </p>
@@ -115,7 +115,7 @@
 
     <section id="news" class="my10">
       <w-flex class="column">
-        <h1 class="headline pt3 pb4" style="font-weight: 300">Latest News</h1>
+        <h1 class="headline pt3 pb4" style="font-weight: 500">Latest News</h1>
         <div v-if="recentNews.length != 0" class="divider">
           <w-divider></w-divider>
           <w-flex
@@ -344,7 +344,7 @@ export default {
   align-items: right;
   padding-left: 10vw;
   padding-right: 5vw;
-  font-weight: lighter;
+  font-weight: 500;
   margin-top: 2vw;
 
   p {
@@ -355,7 +355,7 @@ export default {
   h1 {
     text-align: right;
     font-size: 2rem;
-    font-weight: 300;
+    font-weight: 500;
   }
 }
 

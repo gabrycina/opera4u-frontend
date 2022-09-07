@@ -252,7 +252,7 @@ h3 {
 
 .text {
   color: #666666;
-  font-weight: 300;
+  font-weight: 500;
   font-size: 1.4vw;
   @supports (display: grid) {
     @media (max-width: 40rem) {

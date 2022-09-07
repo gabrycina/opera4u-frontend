@@ -151,7 +151,8 @@ $shadow: rgba(0, 0, 0, 0.2);
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: .8rem;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 @media (max-width: 40rem) {

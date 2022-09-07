@@ -43,8 +43,9 @@ export default {
 
 .newsTitle {
   font-size: 1.2vw;
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: 0.2em;
+  color: #666666;
 }
 
 @supports (display: grid) {
