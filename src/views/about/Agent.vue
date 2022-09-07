@@ -89,7 +89,7 @@
           <div class="lg3 md3 mr3" v-for="artist in agent.artists" :key="artist">
             <div v-if="artist.avatar && artist.bioEnglish">
               <router-link :to="{ name: 'Artist', params: { id: artist.id } }">
-                <h1 class="my1 active text-left">{{ artist.name }}</h1>
+                <p class="my1 active text-left">{{ artist.name }}</p>
               </router-link>
             </div>
             <div v-else>
@@ -224,7 +224,7 @@ $white: #fff;
 }
 
 #copy {
-  color: #868686;
+  color: #666666;
   font-size: 0.8vw;
   @supports (display: grid) {
     @media (max-width: 40rem) {
@@ -251,7 +251,7 @@ h3 {
 }
 
 .text {
-  color: #868686;
+  color: #666666;
   font-weight: 300;
   font-size: 1.4vw;
   @supports (display: grid) {
@@ -330,7 +330,7 @@ a:-webkit-any-link {
   max-width: 90vw;
 
   p {
-    color: #868686;
+    color: #666666;
     display: -webkit-box;
     max-width: inherit;
     -webkit-line-clamp: 3;
@@ -399,7 +399,7 @@ a:-webkit-any-link {
 }
 
 .inactive {
-  color: #868686;
+  color: #666666;
   font-size: 1.2vw;
   @supports (display: grid) {
     @media (max-width: 40rem) {

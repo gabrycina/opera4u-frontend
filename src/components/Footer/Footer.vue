@@ -62,13 +62,13 @@
       <p>@ 2021 Copyright Opera4u.com</p>
     </w-flex>
 
-    <w-flex class="row shrink py5 justify-center">
+    <w-flex class="row shrink my10 justify-center">
       <a
         style="color: inherit;"
         href="https://www.facebook.com/Opera4u-167298469948371/"
         target="_blank"
       >
-        <font-awesome-icon class="black" :icon="['fab', 'facebook']" />
+        <font-awesome-icon class="black" :icon="['fab', 'facebook']" size="2x" />
       </a>
     </w-flex>
   </footer>
@@ -122,7 +122,7 @@ h4 {
 
 .underlined {
     text-decoration: underline;
-        color: #868686;
+        color: #666666;
     padding-top: .5em;
     font-size: 1vw;
 }

@@ -2,11 +2,11 @@
   <div v-if="!isMobileHelper()">
     <div class="container pt3 xs7 justify-end">
       <img id="svg" class="pa0 ma0 xs12" :src="NavBg" alt="Opera4u Logo" />
-      <router-link v-on:click="changeActiveRoute('/')" to="/">
-        <div class="logo xs2"></div>
-      </router-link>
       <div class="options pt4 xs9">
         <w-flex class="row justify-space-evenly">
+          <router-link v-on:click="changeActiveRoute('/')" to="/">
+            <div class="logo xs2"></div>
+          </router-link>
           <transition>
             <router-link
               v-on:click="changeActiveRoute('/artists')"

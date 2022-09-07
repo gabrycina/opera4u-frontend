@@ -35,7 +35,7 @@ h4 {
 }
 
 p {
-    color: #868686;
+    color: #666666;
     padding-top: .5em;
     font-size: 1vw;
 }

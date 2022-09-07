@@ -129,7 +129,7 @@
         </vue-horizontal>
       </div>
     </section>
-    <section v-if="artist.news_articles.length != 0" class="container">
+    <section v-if="artist.news_articles.length != 0">
       <FeaturedOnNews :artist="artist" />
     </section>
   </w-flex>
@@ -288,7 +288,7 @@ $white: #fff;
 }
 
 #copy {
-  color: #868686;
+  color: #666666;
   font-size: 0.8vw;
 
   @supports (display: grid) {
@@ -317,7 +317,7 @@ h3 {
 }
 
 .text {
-  color: #868686;
+  color: #666666;
   font-size: 1.4vw;
   font-weight: 300;
 
@@ -392,7 +392,7 @@ a:-webkit-any-link {
   max-width: 90vw;
 
   p {
-    color: #868686;
+    color: #666666;
     display: -webkit-box;
     max-width: inherit;
     -webkit-line-clamp: 3;

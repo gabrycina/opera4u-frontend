@@ -28,7 +28,7 @@ export default {
     return {
       baseUrl: baseAPI,
       imageProps: {
-        ratio: 20 / 100,
+        ratio: 40 / 100,
       },
     };
   },
@@ -57,7 +57,7 @@ export default {
 max-width: 90vw;
 
   p {
-    color: #868686;
+    color: #666666;
     display: -webkit-box;
     max-width: inherit;
     -webkit-line-clamp: 2;

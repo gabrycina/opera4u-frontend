@@ -76,7 +76,7 @@ export default {
 
 <style lang="scss" scoped>
 $bg: #eedfcc;
-$text: #868686;
+$text: #666666;
 $black: #121212;
 $white: #fff;
 $red: #770a00;
@@ -224,7 +224,7 @@ h1 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  color: #868686;
+  color: #666666;
   font: 15px/1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

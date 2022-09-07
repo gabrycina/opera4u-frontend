@@ -69,7 +69,7 @@ export default {
   }
 
   p {
-    color: #868686;
+    color: #666666;
     font-size: 1vw;
     font-weight: 300;
     display: -webkit-box;

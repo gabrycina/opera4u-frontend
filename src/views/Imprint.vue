@@ -607,7 +607,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   p {
-    color: #868686;
+    color: #666666;
     font-size: 1vw;
   }
 

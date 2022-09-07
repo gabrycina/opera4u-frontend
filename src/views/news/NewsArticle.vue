@@ -6,9 +6,9 @@
     <w-flex class="column justify-center align-center">
       <h1 class="mx10">{{ article.title }}</h1>
       <p class="pt5" style="text-align: justify" v-html="markdownToHtml"></p>
-      <FeaturedArtists :artists="article.artists" />
     </w-flex>
-  </div>
+    <FeaturedArtists :artists="article.artists" />
+</div>
 </template>
 
 <script>
@@ -82,7 +82,7 @@ h1 {
 }
 
 p {
-  color: #868686;
+  color: #666666;
   max-width: 40vw;
   font-size: 1.2vw;
   @supports (display: grid) {

@@ -348,7 +348,7 @@ export default {
   margin-top: 2vw;
 
   p {
-    color: #868686;
+    color: #666666;
     font-size: 1.5rem !important
   }
 

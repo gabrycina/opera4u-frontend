@@ -26,7 +26,7 @@
         <section v-if="team.length == 0" class="text-center xs12 px5">
           <h1
             class="pa12"
-            style="color: #868686; font-weight: 300; opacity: .5"
+            style="color: #666666; font-weight: 300; opacity: .5"
           >
             No Team Members Added Yet
           </h1>
@@ -42,7 +42,7 @@
                 <img :src="baseUrl + agent.avatar.url" />
               </div>
               <p class="title2 pt4 name">
-                <b>{{ agent.name }}</b>
+                {{ agent.name }}
               </p>
             </w-flex>
           </router-link>
@@ -100,7 +100,7 @@ $shadow: rgba(0, 0, 0, 0.2);
   margin-right: 35vw;
 
   p {
-    color: #868686;
+    color: #666666;
     font-size: 1.2rem;
   }
 
