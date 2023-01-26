@@ -23,8 +23,8 @@ RUN rm /etc/nginx/conf.d/default.conf
 
 COPY proxy/nginx.conf /etc/nginx/conf.d
 
-COPY SSL.crt  /etc/ssl/certs
-COPY SSL.key  /etc/ssl/private
+COPY SSL.crt  /etc/ssl/certs/
+COPY SSL.key  /etc/ssl/private/
 
 EXPOSE 443
 # start nginx 
