@@ -18,6 +18,7 @@ RUN npm run build
 FROM nginx:alpine
 
 COPY --from=build /app/dist /usr/share/nginx/html
+COPY BE269E0DA5000DC62311E42E949B6783.txt /usr/share/nginx/html
 
 RUN rm /etc/nginx/conf.d/default.conf
 
