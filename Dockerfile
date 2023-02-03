@@ -26,6 +26,9 @@ COPY proxy/nginx.conf /etc/nginx/conf.d
 
 COPY SSL.crt  /etc/ssl/certs/
 COPY SSL.key  /etc/ssl/private/
+COPY certificate.crt  /etc/ssl/certs/
+COPY private.key  /etc/ssl/private/
+
 
 EXPOSE 443
 # start nginx 
