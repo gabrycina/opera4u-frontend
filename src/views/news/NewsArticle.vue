@@ -17,7 +17,7 @@ const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 export default {
   title: "Opera4u - News",
   name: "NewsArticle",
-  props: ["id"],
+  props: ["slug"],
   components: {
     FeaturedArtists,
   },
@@ -31,7 +31,7 @@ export default {
   methods: {
     async fetchArticle() {
       const res = await fetch(
-        `${baseAPI}/news-articles?id=` + this.id + "",
+        `${baseAPI}/news-articles?slug=` + this.slug + "",
         {
           method: "GET",
           headers: {
