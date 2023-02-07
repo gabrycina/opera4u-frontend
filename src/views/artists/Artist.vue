@@ -143,7 +143,7 @@ const baseAPI = process.env.VUE_APP_STRAPI_BASE_API;
 
 export default {
   name: "Artist",
-  props: ["id"],
+  props: ["slug"],
   data() {
     return {
       artist: {},
@@ -173,7 +173,7 @@ export default {
     },
 
     async fetchArtist() {
-      const res = await fetch(`${baseAPI}/artists?id=` + this.id + "", {
+      const res = await fetch(`${baseAPI}/artists?slug=` + this.slug + "", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

@@ -15,7 +15,7 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/artists/Artists.vue"),
   },
   {
-    path: "/artist/:id",
+    path: "/artist/:slug",
     name: "Artist",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/artists/Artist.vue"),
