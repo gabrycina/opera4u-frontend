@@ -23,7 +23,7 @@
           <w-divider></w-divider>
           <w-flex class="row wrap">
             <section class="lg3 md3 xs12 py5 px5" v-for="artist in category.artists" :key="artist.id">
-              <router-link :to="{ name: 'Artist', params: { id: artist.id } }">
+              <router-link :to="{ name: 'Artist', params: { slug: artist.slug } }">
                 <w-flex class="column align-center">
                   <div class="cardImage xs12">
                     <img :src="baseUrl + artist.avatar.url" />
