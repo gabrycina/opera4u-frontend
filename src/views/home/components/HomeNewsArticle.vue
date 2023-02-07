@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: 'NewsArticle', params: { id: id } }">
+  <router-link :to="{ name: 'NewsArticle', params: { slug: slug } }">
     <w-card
       contentClass="content"
       :image="`${baseUrl + image}`"
@@ -48,6 +48,7 @@ export default {
     artist: String,
     date: String,
     id: Number,
+    slug: String
   },
   methods: {
     hasBody() {

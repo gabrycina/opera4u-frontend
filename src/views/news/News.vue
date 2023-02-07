@@ -5,7 +5,7 @@
     <w-flex class="column pt10 align-center">
       <div :key="newsArticle.id" v-for="newsArticle in filteredNews">
         <router-link
-          :to="{ name: 'NewsArticle', params: { id: newsArticle.id } }"
+          :to="{ name: 'NewsArticle', params: { slug: newsArticle.slug } }"
         >
           <div class="container">
             <a class="card-link" href="#">

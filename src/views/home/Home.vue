@@ -130,6 +130,7 @@
               :artist="recentNews[0].artists[0].name"
               :date="recentNews[0].date"
               :id="recentNews[0].id"
+              :slug="recentNews[0].slug"
               class="mr5 mb5 md6 xs12"
             />
             <w-flex class="column md5 xs12">
@@ -145,6 +146,7 @@
                 "
                 :date="recentNews[1].date"
                 :id="recentNews[1].id"
+                :slug="recentNews[1].slug"
                 class="mr5 mb5 xs12"
               />
               <HomeNewsArticle
@@ -159,6 +161,7 @@
                 "
                 :date="recentNews[2].date"
                 :id="recentNews[2].id"
+                :slug="recentNews[2].slug"
                 class="mr5 mb5 xs12"
               />
             </w-flex>
@@ -174,6 +177,7 @@
               "
               :date="recentNews[3].date"
               :id="recentNews[3].id"
+              :slug="recentNews[3].slug"
               class="mb5 md4 xs12"
               :class="[isMobileHelper() ? '' : 'ml5']"
             />

@@ -6,7 +6,7 @@
     <w-divider class="my4"></w-divider>
     <vue-horizontal class="horizontal">
       <div class="item" v-for="artist in artists" :key="artist.name">
-        <router-link :to="{ name: 'Artist', params: { id: artist.id } }">
+        <router-link :to="{ name: 'Artist', params: { slug: artist.slug } }">
           <div class="card">
             <div class="image" :style="{background: `url(${baseUrl + artist.avatar.url})`}"></div>
             <div class="content">
