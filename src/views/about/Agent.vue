@@ -88,7 +88,7 @@
         >
           <div class="lg3 md3 mr3" v-for="artist in agent.artists" :key="artist">
             <div v-if="artist.avatar && artist.bioEnglish">
-              <router-link :to="{ name: 'Artist', params: { id: artist.id } }">
+              <router-link :to="{ name: 'Artist', params: { slug: artist.slug } }">
                 <p class="my1 active text-left">{{ artist.name }}</p>
               </router-link>
             </div>
