@@ -235,7 +235,7 @@ export default {
       this.recentNews = [];
 
       //Making GET request for news
-      const res = await fetch(`${baseAPI}/news-articles`, {
+      const res = await fetch(`${baseAPI}/news-articles?_limit=-1`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

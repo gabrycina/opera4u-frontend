@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     async fetchNews() {
-      const res = await fetch(`${baseAPI}/news-articles`, {
+      const res = await fetch(`${baseAPI}/news-articles?_limit=-1`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
