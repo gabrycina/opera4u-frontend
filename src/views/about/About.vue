@@ -75,7 +75,7 @@ export default {
       this.team = []
         .concat(res[3])
         .concat(res[1])
-        .concat(res[res.length - 2])
+        .concat(res[4])
         .concat(res[0]);
       console.log(this.team);
     },
