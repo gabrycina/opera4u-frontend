@@ -73,8 +73,9 @@ export default {
       }).then((response) => response.json());
 
       this.team = []
-        .concat(res[3])
         .concat(res[1])
+        .concat(res[3])
+        .concat(res[2])
         .concat(res[4])
         .concat(res[0]);
       console.log(this.team);
