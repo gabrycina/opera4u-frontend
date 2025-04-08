@@ -33,6 +33,7 @@
         </section>
         <section
           class="lg3 md3 xs12 py5 px5"
+          style="max-width: 20%"
           v-for="agent in team"
           :key="agent.id"
         >
